@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goal Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+
+    header, footer {
+      background-color: #9fd3c7;
+      text-align: center;
+      padding: 20px;
+      color: white;
+    }
+    nav {
+      background-color: #dbe9e8;
+      padding: 1em;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
+    nav li {
+      margin: 0 1em;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin: 1rem 0;
+    }
+
+    .goal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.goal-card {
+  width: 120px;
+  height: 120px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+    .goal-icon {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+
+
+    .dropdown {
+      margin: 1rem auto;
+      display: none;
+      text-align: center;
+    }
+
+    .dropdown select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .tracker {
+      display: none;
+      margin: 2rem auto;
+      width: 90%;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    table th:nth-child(2),
+    table td:nth-child(2) {
+      width: 80px;
+    }
+
+    table input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+    }
+
+    table th {
+      background-color: #e0f7fa;
+    }
+
+    .delete-btn {
+      margin-top: 1rem;
+      background-color: #ff6b81;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: #e0556e;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Goal Tracker</h1>
+</header>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+  </ul>
+</nav><br><br>
+
+<main>
+  <div class="goal-grid">
+    <div class="goal-card" data-category="religious">🙏<br>Religious</div>
+    <div class="goal-card" data-category="nutrition">🥗<br>Nutrition</div>
+    <div class="goal-card" data-category="sports">🏋️‍♂️<br>Sports</div>
+    <div class="goal-card" data-category="hobbies">🎨<br>Hobbies</div>
+    <div class="goal-card" data-category="work">💼<br>Work</div>
+    <div class="goal-card" data-category="relationships">❤️<br>Relationships</div>
+    <div class="goal-card" data-category="study">📘<br>Study</div>
+    <div class="goal-card" data-category="mental">🧘<br>Mental Health</div>
+    <div class="goal-card" data-category="finance">💰<br>Finance</div>
+    <div class="goal-card" data-category="custom">➕<br>Custom</div>
+  </div>
+
+  <div class="dropdown" id="subcategoryDropdown">
+    <label for="subcategorySelect">Select a subcategory:</label>
+    <select id="subcategorySelect">
+      <option value="">-- Select --</option>
+    </select>
+  </div>
+
+  
+</main>
+<br><br>
+<footer>
+  <p>&copy; 2025 Calm Bot</p>
+</footer>
+
+<script>
+  const categories = {
+    religious: ["Daily Prayer", "Reading Scripture", "Meditation"],
+    nutrition: ["Calorie Goal", "Healthy Eating", "Fasting"],
+    sports: ["Cardio", "Strength Training", "Yoga"],
+    hobbies: ["Drawing", "Writing", "Music"],
+    work: ["Daily Tasks", "Emails", "Meetings"],
+    relationships: ["Call Family", "Compliment Partner", "Help a Friend"],
+    study: ["Read Textbook", "Revise Notes", "Practice Questions"],
+    mental: ["Journal", "Mindfulness", "Therapy Session"],
+    finance: ["Budget", "Save Money", "No Spend Day"],
+    custom: []
+  };
+
+  const goalCards = document.querySelectorAll('.goal-card');
+  const dropdown = document.getElementById('subcategoryDropdown');
+  const select = document.getElementById('subcategorySelect');
+  const main = document.querySelector('main');
+
+  goalCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const cat = card.getAttribute('data-category');
+
+      if (cat === 'custom') {
+        const customGoal = prompt("Enter your custom goal name:");
+        if (customGoal) {
+          categories.custom = [customGoal];
+          showDropdown(cat);
+        }
+      } else {
+        showDropdown(cat);
+      }
+    });
+  });
+
+  function showDropdown(category) {
+    select.innerHTML = '<option value="">-- Select --</option>';
+    categories[category].forEach(item => {
+      const opt = document.createElement('option');
+      opt.value = item;
+      opt.textContent = item;
+      select.appendChild(opt);
+    });
+    dropdown.style.display = 'block';
+  }
+
+  select.addEventListener('change', () => {
+    const selectedGoal = select.value;
+    if (selectedGoal && !document.getElementById('tracker-' + selectedGoal)) {
+      generateTracker(selectedGoal);
+    }
+    select.value = ""; // reset after selection
+  });
+
+  function generateTracker(goalName) {
+    const trackerWrapper = document.createElement('div');
+    trackerWrapper.className = "tracker";
+    trackerWrapper.id = "tracker-" + goalName;
+
+    const title = document.createElement('h3');
+    title.textContent = `📅 Tracking: ${goalName}`;
+
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <thead>
+        <tr><th>Day</th><th>Status</th></tr>
+      </thead>
+      <tbody></tbody>
+    `;
+    const tbody = table.querySelector('tbody');
+
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const savedData = JSON.parse(localStorage.getItem("tracker-" + goalName)) || {};
+
+    days.forEach(day => {
+      const row = document.createElement('tr');
+      const dayCell = document.createElement('td');
+      dayCell.textContent = day;
+
+      const checkCell = document.createElement('td');
+      const checkbox = document.createElement('input');
+      checkbox.type = "checkbox";
+      checkbox.checked = !!savedData[day];
+
+      checkbox.addEventListener('change', () => {
+        savedData[day] = checkbox.checked;
+        localStorage.setItem("tracker-" + goalName, JSON.stringify(savedData));
+      });
+
+      checkCell.appendChild(checkbox);
+      row.appendChild(dayCell);
+      row.appendChild(checkCell);
+      tbody.appendChild(row);
+    });
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = "delete-btn";
+    deleteBtn.textContent = "🗑️ Delete Tracker";
+    deleteBtn.addEventListener('click', () => {
+      localStorage.removeItem("tracker-" + goalName);
+      trackerWrapper.remove();
+    });
+
+    trackerWrapper.appendChild(title);
+    trackerWrapper.appendChild(table);
+    trackerWrapper.appendChild(deleteBtn);
+
+    main.appendChild(trackerWrapper);
+    trackerWrapper.style.display = 'block';
+  }
+</script>
+
+
+
+</body>
+</html>

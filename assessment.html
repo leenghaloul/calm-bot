@@ -1,0 +1,183 @@
+<!-- assessment.html (Assessments Page with CalmBot design) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assessments</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fef6f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #a3d2ca;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #e4bad4;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 15px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background-color: #c98bb9;
+    }
+
+    main {
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    main p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .quiz-grid a button {
+      background-color: #ffb3c6;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .quiz-grid a button:hover {
+      background-color: #ff94a2;
+    }
+
+    footer {
+      background-color: #a3d2ca;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 40px;
+    }
+    .stats-section {
+  background-color: #fef6f9;
+  padding: 30px;
+  border-top: 2px solid #e4bad4;
+  text-align: center;
+}
+
+.stats-section h2 {
+  color: #a764a0;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stat-card {
+  background: #fff0f6;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.stat-card h3 {
+  color: #c98bb9;
+  margin-bottom: 8px;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mental Health Assessments</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+
+  <main>
+    <p>Pick an assessment to gain insight into your mental well-being:</p>
+    <div class="quiz-grid">
+      <a href="autism.html"><button>Autism Assessment</button></a>
+      <a href="adhd.html"><button>ADHD Assessment</button></a>
+      <a href="depression.html"><button>Depression Assessment</button></a>
+      <a href="bpd.html"><button>BPD Assessment</button></a>
+      <a href="anxiety.html"><button>Anxiety Assessment</button></a>
+      <a href="schizophrenia.html"><button>Schizophrenia Assessment</button></a>
+      <a href="ptsd.html"><button>PTSD Assessment</button></a>
+      <a href="ocd.html"><button>OCD Assessment</button></a>
+      <a href="eating.html"><button>ED Assessment</button></a>
+      <a href="narcissistic.html"><button>Narcissism Assessment</button></a>
+            <a href="narcissistic.html"><button>Narcissism Assessment</button></a>
+
+      <a href="narcissistic.html"><button>Narcissism Assessment</button></a>
+
+    </div><br><br>
+    <section class="stats-section">
+  <h2>You’re Not Alone</h2>
+  <p>Millions of people experience mental health challenges. You’re taking a brave and positive step.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>ADHD</h3>
+      <p>Over <strong>6.1 million</strong> children and countless adults in the U.S. have been diagnosed with ADHD.</p>
+    </div>
+    <div class="stat-card">
+      <h3>Depression</h3>
+      <p>More than <strong>280 million</strong> people globally live with depression.</p>
+    </div>
+    <div class="stat-card">
+      <h3>Anxiety</h3>
+      <p>Roughly <strong>30%</strong> of teens experience an anxiety disorder at some point.</p>
+    </div>
+    <div class="stat-card">
+      <h3>Eating Disorders</h3>
+      <p>Eating disorders affect at least <strong>9%</strong> of the population worldwide.</p>
+    </div>
+    <div class="stat-card">
+      <h3>Autism</h3>
+      <p>About <strong>1 in 36</strong> children are diagnosed with autism spectrum disorder (ASD).</p>
+    </div>
+    <div class="stat-card">
+      <h3>Autism</h3>
+      <p>About <strong>1 in 36</strong> children are diagnosed with autism spectrum disorder (ASD).</p>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calm Bot</p>
+  </footer>
+</body>
+</html>

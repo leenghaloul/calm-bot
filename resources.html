@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resources</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    header, nav {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #0077cc;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .scroll-wrapper {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 1.5rem;
+      padding: 1rem 2rem;
+      scroll-behavior: smooth;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .resource-card {
+      flex: 0 0 260px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .resource-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .resource-card h2 {
+      font-size: 1.2rem;
+      margin: 0.75rem 0 0.5rem;
+      color: #333;
+    }
+
+    .resource-card p {
+      padding: 0 1rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .read-more {
+      display: inline-block;
+      margin: 1rem 0 1.5rem;
+      padding: 0.5rem 1.2rem;
+      background-color: #6cb4ee;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .read-more:hover {
+      background-color: #559ed3;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ccc;
+      color: #333;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0.8;
+      transition: background-color 0.3s;
+    }
+
+    .arrow:hover {
+      background-color: #999;
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+    .urgent-help {
+  background-color: #ffe6e9;
+  border-left: 6px solid #ff5c77;
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.urgent-help h2 {
+  color: #c80032;
+  margin-top: 0;
+}
+
+.urgent-help ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.urgent-help li {
+  margin: 12px 0;
+  font-size: 16px;
+}
+
+.urgent-help a {
+  color: #d6336c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.urgent-help a:hover {
+  text-decoration: underline;
+}
+
+.urgent-help .note {
+  font-style: italic;
+  margin-top: 15px;
+}
+.video-resources {
+  background-color: #fef6f9;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.video-resources h2 {
+  color: #ff6b9f;
+  margin-top: 0;
+}
+
+.video-scroll-wrapper {
+  position: relative;
+  margin-top: 20px;
+}
+
+.video-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 2rem;
+  scroll-snap-type: x mandatory;
+}
+
+.video-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.video-item {
+  flex: 0 0 30%;
+  scroll-snap-align: start;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.arrow.video-left {
+  left: 0;
+  top: 45%;
+}
+
+.arrow.video-right {
+  right: 0;
+  top: 45%;
+}
+
+
+
+.video-item {
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.video-item iframe {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  border: none;
+}
+
+.video-item p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #444;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Resources</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html"><b>Home</b></a></li>
+    </ul>
+  </nav>
+
+  <main>
+<section class="urgent-help">
+  <h2>🚨 Urgent Help (UAE)</h2>
+  <p>If you or someone you know is in immediate danger or needs urgent mental health support, please reach out to one of the following resources:</p>
+
+  <ul>
+    <li><strong>📞 UAE National Ambulance:</strong> <a href="tel:998">998</a> (Emergency Medical Help)</li>
+    <li><strong>📞 Dubai Police Mental Health Support:</strong> <a href="tel:8004888">800 4888</a> or <a href="tel:999">999</a> (General Emergency)</li>
+    <li><strong>📞 Ministry of Health Mental Health Helpline:</strong> <a href="tel:80011111">800 11111</a></li>
+    <li><strong>📞 Al Amal Psychiatric Hospital (Dubai):</strong> <a href="tel:+97142856666">+971 4 285 6666</a></li>
+    <li><strong>🌐 UAE Mental Health Support Portal:</strong> <a href="https://mohap.gov.ae" target="_blank">MOHAP.gov.ae</a></li>
+    <li><strong>📱 Mental Support App:</strong> Try <a href="https://www.hayyak.mohap.gov.ae" target="_blank">Hayyak by MOHAP</a> for chat-based support.</li>
+  </ul>
+
+  <p class="note">You are not alone. Help is always available. If it’s an emergency, don’t wait — reach out <b>now</b>.</p>
+</section>
+
+    <!-- Scrollable Resource Section -->
+    <section class="scroll-wrapper">
+      <button class="arrow arrow-left" onclick="scrollResources(-1)">&#10094;</button>
+      <button class="arrow arrow-right" onclick="scrollResources(1)">&#10095;</button>
+
+      <div class="scroll-container" id="resourceScroll">
+        <div class="resource-card">
+          <h2>Suicide & Self-Harm</h2>
+          <p>If you’re feeling suicidal, you may be afraid you’ll be judged or that no one will understand. If you’re worried about someone else, you may fear that you’ll say the wrong thing. But talking openly can save a life. Don’t wait:<b> reach out.</b></p><br>
+          <a target="_blank" href="https://www.helpguide.org/mental-health/suicide-self-harm/are-you-feeling-suicidal" class="read-more">Read More</a>
+        </div>
+
+        <div class="resource-card">
+          <h2>Emotional Intelligence</h2>
+          <p>Emotions are powerful. They can override thoughts and profoundly influence behavior. Emotional intelligence (EQ) allows us to harness that power to understand ourselves, break bad habits, and relate to others better.</p><br>
+          <a target="_blank" href="https://www.helpguide.org/mental-health/wellbeing/emotional-intelligence-toolkit" class="read-more">Read More</a>
+        </div>
+
+        <div class="resource-card">
+          <h2>Addiction</h2>
+          <p>When you’re stuck in the cycle of addiction, recovery can seem out of reach. But no matter how powerless you feel, change is possible with the right treatment, coping strategies, and support. <b>Don’t give up</b>, even if you’ve tried and failed before.</p>
+          <a target="_blank" href="https://www.helpguide.org/mental-health/addiction#subcategory-posts" class="read-more">Read More</a>
+        </div>
+        <div class="resource-card">
+          <h2>Sleep</h2>
+          <p>Getting quality sleep is vital to your productivity, energy, and mental and physical health. Explore the different types and treatments of sleep problems and disorders—and what you can do to get a better night’s sleep.</p><br>
+          <a target="_blank" href="https://www.helpguide.org/wellness/sleep/getting-better-sleep" class="read-more">Read More</a>
+        </div>
+        <div class="resource-card">
+          <h2>PTSD & Trauma</h2>
+          <p>When you’ve gone through something traumatic, it can seem like you’ll never feel safe again. But whether the trauma happened yesterday or years ago, you can find a way to heal, let go of painful memories, and move on.</p>
+          <a target="_blank" href="https://www.helpguide.org/mental-health/ptsd-trauma/coping-with-emotional-and-psychological-trauma" class="read-more">Read More</a>
+        </div>
+        <div class="resource-card">
+          <h2>Stress</h2>
+          <p>In small doses, stress can help you stay energized and focused. But when it’s chronic or overwhelming, it can damage your health, productivity, and well-being. Learn the warning signs and what you can do to protect yourself.</p>
+          <a target="_blank" href="https://www.helpguide.org/mental-health/stress/quick-stress-relief" class="read-more">Read More</a>
+        </div>
+        <div class="resource-card">
+          <h2>Grief & Loss</h2>
+          <p>Any loss can cause grief, including the loss of a relationship, your health, your job, or a cherished dream. Learn how to better cope with what you’re feeling and process your emotions in ways that allow you to heal.</p>
+          <a target="_blank" href="https://www.helpguide.org/mental-health/grief/coping-with-grief-and-loss" class="read-more">Read More</a>
+        </div>
+        <div class="resource-card">
+          <h2>Love</h2>
+          <p>Strong healthy relationships—whether romantic, family, or friendship—are vital to our happiness as human beings. These resources will help you learn the skills you need to repair old connections and build meaningful new ones.</p>
+          <a target="_blank" href="https://www.helpguide.org/relationships/social-connection/tips-for-finding-lasting-love" class="read-more">Read More</a>
+        </div>
+        <div class="resource-card">
+          <h2>Deaing with shyness</h2>
+          <p>Are you introverted, insecure, or socially awkward? Do you struggle to connect with others? Here’s how to make friends and build relationships even if you’re not outgoing.</p><br><br>
+          <a target="_blank" href="https://www.helpguide.org/relationships/social-connection/dealing-with-loneliness-and-shyness" class="read-more">Read More</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-resources">
+  <h2>🎥 Mental Health Videos</h2>
+  <p>Watch calming or informative videos to support your mental health journey.</p>
+
+  <div class="video-scroll-wrapper">
+    <button class="arrow video-left" onclick="scrollVideos(-1)">&#10094;</button>
+    <button class="arrow video-right" onclick="scrollVideos(1)">&#10095;</button>
+
+    <div class="video-grid" id="videoScroll">
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/ZToicYcHIOU" title="Guided Meditation for Anxiety" allowfullscreen></iframe>
+        <p>🧘 Guided Meditation for Anxiety</p>
+      </div>
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/aNTnF58RaBw" title="Understanding Depression" allowfullscreen></iframe>
+        <p>📘 Understanding Depression</p>
+      </div>
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/MIr3RsUWrdo" title="5-4-3-2-1 Grounding Technique" allowfullscreen></iframe>
+        <p>🌿 5-4-3-2-1 Grounding Technique</p>
+      </div>
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/MIr3RsUWrdo" title="5-4-3-2-1 Grounding Technique" allowfullscreen></iframe>
+        <p>🌿 5-4-3-2-1 Grounding Technique</p>
+      </div>
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/MIr3RsUWrdo" title="5-4-3-2-1 Grounding Technique" allowfullscreen></iframe>
+        <p>🌿 5-4-3-2-1 Grounding Technique</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Map Section -->
+    <section>
+      <p>Find the nearest support centers:</p>
+      <iframe
+        width="50%"
+        height="400"
+        frameborder="0"
+        style="border:0"
+        referrerpolicy="no-referrer-when-downgrade"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyALPY8cdgWqoORSq93RBk9XXA8APV2zaHg&q=mental+health+clinics+near+me">
+      </iframe>
+    </section>
+
+  </main>
+
+  <script>
+    function scrollResources(direction) {
+      const container = document.getElementById('resourceScroll');
+      const scrollAmount = 300;
+      container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+
+  function scrollVideos(direction) {
+    const container = document.getElementById('videoScroll');
+    const scrollAmount = 300;
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+
+  </script>
+</body>
+</html>

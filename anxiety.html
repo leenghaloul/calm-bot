@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anxiety Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            font-size: 18px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: seagreen;
+            text-align: center;
+            font-size: 32px;
+        }
+        .question {
+            margin: 25px 0;
+            font-size: 20px;
+        }
+        .question label {
+            font-weight: bold;
+            font-size: 22px;
+        }
+        .question input {
+            transform: scale(1.5);
+            margin-right: 15px;
+        }
+        .result {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .result p {
+            font-size: 20px;
+            color: #444;
+        }
+        .result.success {
+            color: green;
+        }
+        .result.warning {
+            color: orange;
+        }
+        .result.danger {
+            color: red;
+        }
+        button {
+            font-size: 22px;
+            padding: 10px 20px;
+            background-color: seagreen;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #77DD77;
+        }
+        .back-button {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+        }
+        .back-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Anxiety Assessment</h1>
+        <p>Please answer the following questions to help assess possible symptoms of anxiety.</p>
+        <form id="assessmentForm">
+            <div class="question">
+                <label for="question1">1. Do you feel nervous, anxious, or on edge?</label><br>
+                <input type="radio" name="q1" value="0" id="q1_0"> Never
+                <input type="radio" name="q1" value="1" id="q1_1"> Sometimes
+                <input type="radio" name="q1" value="2" id="q1_2"> Frequently
+            </div>
+            <div class="question">
+                <label for="question2">2. Do you find it hard to stop worrying once you’ve started?</label><br>
+                <input type="radio" name="q2" value="0" id="q2_0"> Never
+                <input type="radio" name="q2" value="1" id="q2_1"> Sometimes
+                <input type="radio" name="q2" value="2" id="q2_2"> Frequently
+            </div>
+            <div class="question">
+                <label for="question3">3. Do you feel tense or unable to relax, even in calm situations?</label><br>
+                <input type="radio" name="q3" value="0" id="q3_0"> Never
+                <input type="radio" name="q3" value="1" id="q3_1"> Sometimes
+                <input type="radio" name="q3" value="2" id="q3_2"> Frequently
+            </div>
+            <div class="question">
+                <label for="question4">4. Does anxiety interfere with your ability to focus or complete tasks?</label><br>
+                <input type="radio" name="q4" value="0" id="q4_0"> Never
+                <input type="radio" name="q4" value="1" id="q4_1"> Sometimes
+                <input type="radio" name="q4" value="2" id="q4_2"> Frequently
+            </div>
+            <div class="question">
+                <label for="question5">5. Do you experience physical symptoms of anxiety (e.g., racing heart, sweating, shortness of breath)?</label><br>
+                <input type="radio" name="q5" value="0" id="q5_0"> Never
+                <input type="radio" name="q5" value="1" id="q5_1"> Sometimes
+                <input type="radio" name="q5" value="2" id="q5_2"> Frequently
+            </div>
+            <button type="button" onclick="calculateResult()">Submit</button>
+        </form>
+
+        <div id="assessmentResult" class="result"></div>
+        
+        <a href="assessment.html" class="back-button">Back to Assessment</a>
+    </div>
+
+    <script>
+        function calculateResult() {
+            const form = document.getElementById("assessmentForm");
+            let score1 = parseInt(form.q1.value || 0);
+            let score2 = parseInt(form.q2.value || 0);
+            let score3 = parseInt(form.q3.value || 0);
+            let score4 = parseInt(form.q4.value || 0);
+            let score5 = parseInt(form.q5.value || 0);
+
+            let totalScore = score1 + score2 + score3 + score4 + score5;
+            let resultText = '';
+            let resultClass = '';
+
+            // Result based on total score
+            if (totalScore <= 5) {
+                resultText = "Your score is " + totalScore + "/10. You do not show significant symptoms of anxiety.";
+                resultClass = "success";
+            } else if (totalScore <= 10) {
+                resultText = "Your score is " + totalScore + "/10. You might be experiencing mild symptoms of anxiety. Consider talking to a professional.";
+                resultClass = "warning";
+            } else {
+                resultText = "Your score is " + totalScore + "/10. You may be experiencing significant symptoms of anxiety. It's important to seek professional help.";
+                resultClass = "danger";
+            }
+
+            document.getElementById("assessmentResult").innerHTML = `<p>${resultText}</p>`;
+            document.getElementById("assessmentResult").className = `result ${resultClass}`;
+        }
+    </script>
+
+</body>
+</html>

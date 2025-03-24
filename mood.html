@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fef6f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+  background-color: #a3d2ca;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background-color: #e4bad4;
+  padding: 15px 0;
+  text-align: center;
+}
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 15px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background-color: #c98bb9;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .tracker {
+      max-width: 500px;
+      flex: 1;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    textarea {
+     width: 96%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #ffb3c6;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff94a2;
+    }
+
+    #extraInput {
+      display: none;
+    }
+
+    #moodParagraph {
+      white-space: pre-wrap;
+      margin-top: 15px;
+      background-color: #fff0f6;
+      padding: 15px;
+      border-radius: 10px;
+      font-style: italic;
+      display: none; /* Start hidden */
+    }
+
+    .history {
+      flex: 1;
+      max-width: 400px;
+      background: #f3f3f3;
+      padding: 20px;
+      border-radius: 15px;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .mood-group {
+      margin-bottom: 20px;
+    }
+
+    .mood-group h3 {
+      margin: 0;
+      background-color: #d7f0f0;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 10px;
+      text-transform: capitalize;
+    }
+
+    .note-list {
+      display: none;
+      margin-top: 10px;
+      padding-left: 10px;
+    }
+
+    .note {
+      background-color: #fff;
+      margin-bottom: 8px;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    footer {
+      background-color: #a3d2ca;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mood Tracker</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+
+  <main>
+    <div class="tracker">
+      <h2>How are you feeling today?</h2>
+      <select id="moodSelect">
+        <option value="">Select a Mood</option>
+        <option value="happy">😊 Happy</option>
+        <option value="sad">😢 Sad</option>
+        <option value="anxious">😰 Anxious</option>
+        <option value="angry">😡 Angry</option>
+        <option value="excited">🤩 Excited</option>
+        <option value="lonely">😞 Lonely</option>
+        <option value="confident">💪 Confident</option>
+      </select>
+      <button onclick="saveMood()">Save Mood</button>
+
+      <h3 id="moodDisplay"></h3>
+      <p id="moodParagraph"></p>
+
+      <div id="extraInput">
+        <label for="moodNotes">Would you like to write more about it?</label>
+        <textarea id="moodNotes" placeholder="Write here..."></textarea>
+        <button onclick="saveMore()">Save Note</button>
+      </div>
+    </div>
+
+    <div class="history">
+      <h2>Note History</h2>
+      <div id="historyContent"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calm Bot</p>
+  </footer>
+
+<script>
+  const moodTexts = {
+    happy: "You're feeling happy — that's amazing! Let yourself enjoy the moment fully, and don’t feel guilty about the good days.\n\nTip: Write down what’s making you happy so you can revisit it later when you need a boost. 😊",
+    sad: "Sadness is a valid emotion and part of being human. It’s okay to slow down and give yourself permission to feel it without judgment.\n\nTip: Try journaling your thoughts or talking to someone you trust — expressing it can help lighten the load. 💙",
+    anxious: "Anxiety often shows up when your mind is racing about the future or uncertain outcomes. It can feel overwhelming, but it won’t last forever.\n\nTip: Take a moment to breathe slowly. Try the 4-7-8 method: inhale for 4 seconds, hold for 7, exhale for 8. 🌬️",
+    angry: "Anger is a powerful emotion that usually signals unmet needs or boundaries. It's okay to feel it — what matters is how you respond.\n\nTip: Step away for a moment and take some deep breaths. Try writing out what's triggering your anger before acting on it. 🔥",
+    excited: "You're feeling excited — that's a beautiful energy! It often comes with anticipation and big emotions.\n\nTip: Channel your excitement into something creative or forward-moving, like making a plan or sharing your joy with someone. 🎉",
+    lonely: "Feeling lonely can happen even when you're not physically alone. You're not the only one who feels this way, and it doesn't mean something is wrong with you.\n\nTip: Reach out to someone — even a short message or walk outside can help shift that feeling. 💛",
+    confident: "Confidence means you're trusting yourself — and that’s something to celebrate! It can come from small wins or simply believing in your worth.\n\nTip: Take note of what’s making you feel confident today, and revisit it when you need a reminder of your strength. 💪"
+  };
+
+  const moodLabels = {
+    happy: " Happy ▾",
+    sad: " Sad ▾",
+    anxious: " Anxious ▾",
+    angry: " Angry ▾",
+    excited: " Excited ▾",
+    lonely: " Lonely ▾",
+    confident: " Confident ▾"
+  };
+
+  const moodDescription = {
+    happy: " Happy.",
+    sad: " Sad.",
+    anxious: " Anxious.",
+    angry: " Angry.",
+    excited: " Excited.",
+    lonely: " Lonely.",
+    confident: " Confident."
+  };
+
+  function saveMood() {
+    const mood = document.getElementById("moodSelect").value;
+    const moodDisplay = document.getElementById("moodDisplay");
+    const moodPara = document.getElementById("moodParagraph");
+    const extraInput = document.getElementById("extraInput");
+
+    if (mood) {
+      localStorage.setItem("selectedMood", mood);
+      moodDisplay.textContent = "You're feeling " + moodDescription[mood];
+      moodPara.textContent = moodTexts[mood] || "";
+      moodPara.style.display = "block";
+      extraInput.style.display = "block";
+    }
+  }
+
+  function saveMore() {
+    const mood = localStorage.getItem("selectedMood");
+    const notes = document.getElementById("moodNotes").value.trim();
+    if (!mood || notes === "") {
+      alert("Please select a mood and write something.");
+      return;
+    }
+
+    const date = new Date().toLocaleString();
+    const entry = { mood, notes, date };
+    let allNotes = JSON.parse(localStorage.getItem("moodNotes") || "[]");
+    allNotes.push(entry);
+    localStorage.setItem("moodNotes", JSON.stringify(allNotes));
+
+    document.getElementById("moodNotes").value = "";
+    renderHistory();
+  }
+
+  function deleteNote(entryToDelete) {
+    let allNotes = JSON.parse(localStorage.getItem("moodNotes") || "[]");
+    allNotes = allNotes.filter(entry =>
+      !(entry.date === entryToDelete.date && entry.notes === entryToDelete.notes && entry.mood === entryToDelete.mood)
+    );
+    localStorage.setItem("moodNotes", JSON.stringify(allNotes));
+    renderHistory();
+  }
+
+  function renderHistory() {
+    const historyContainer = document.getElementById("historyContent");
+    historyContainer.innerHTML = "";
+    const allNotes = JSON.parse(localStorage.getItem("moodNotes") || "[]");
+
+    const grouped = {};
+    allNotes.forEach(note => {
+      if (!grouped[note.mood]) grouped[note.mood] = [];
+      grouped[note.mood].push(note);
+    });
+
+    Object.keys(grouped).forEach(mood => {
+      const group = document.createElement("div");
+      group.className = "mood-group";
+
+      const heading = document.createElement("h3");
+      heading.textContent = moodLabels[mood] || mood;
+
+      const noteList = document.createElement("div");
+      noteList.className = "note-list";
+
+      heading.addEventListener("click", () => {
+        noteList.style.display = noteList.style.display === "none" ? "block" : "none";
+      });
+
+      grouped[mood].forEach(entry => {
+        const note = document.createElement("div");
+        note.className = "note";
+
+        const textSpan = document.createElement("span");
+        textSpan.textContent = `${entry.date}: ${entry.notes}`;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "🗑";
+        deleteBtn.style.marginLeft = "10px";
+        deleteBtn.style.background = "transparent";
+        deleteBtn.style.border = "none";
+        deleteBtn.style.cursor = "pointer";
+        deleteBtn.style.color = "red";
+        deleteBtn.style.fontSize = "22px";
+
+        deleteBtn.onclick = () => deleteNote(entry);
+
+        note.appendChild(textSpan);
+        note.appendChild(deleteBtn);
+        noteList.appendChild(note);
+      });
+
+      group.appendChild(heading);
+      group.appendChild(noteList);
+      historyContainer.appendChild(group);
+    });
+  }
+
+  window.onload = renderHistory;
+</script>
+
+</body>
+</html>
