@@ -1,39 +1,121 @@
-<!-- index.html (Home Page) --><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calm Bot - Home</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Splash Screen Styles */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background-color: #0b0c10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.6s ease;
+        }
 
+        .robot-face {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            transform: scale(1.1); /* Slightly bigger overall */
+        }
 
+        .eyes {
+            display: flex;
+            gap: 70px;
+            margin-bottom: 25px;
+        }
+
+        .eye {
+            width: 75px;
+            height: 75px;
+            background-color: #00f5ff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00f5ff;
+        }
+
+        .mouth {
+            margin-top: 10px;
+            filter: drop-shadow(0 0 12px #00f5ff); /* glow like eyes */
+        }
+
+        body.loaded #splash-screen {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        body.loaded main,
+        body.loaded header,
+        body.loaded nav,
+        body.loaded footer {
+            display: block;
+        }
+
+        main,
+        header,
+        nav,
+        footer {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="robot-face" onclick="enterSite()">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <svg class="mouth" width="160" height="60" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 10 Q80 50 140 10" stroke="#00f5ff" stroke-width="15" stroke-linecap="round" fill="none" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <header>
         <h1>Welcome to Calm Bot</h1>
     </header>
-    
+
     <nav>
         <ul>
-            <b><li><a href="journal.html">Journal</a></li>
-            <li><a href="mood.html">Mood Tracker</a></li>
-            <li><a href="assessment.html">Assessments</a></li>
-            <li><a href="goals.html">Goal Tracker</a></li>
-                        <li><a href="resources.html">Resources</a></li></b>
-
+            <b>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="mood.html">Mood Tracker</a></li>
+                <li><a href="assessment.html">Assessments</a></li>
+                <li><a href="goals.html">Goal Tracker</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </b>
         </ul>
     </nav>
-    
-<section id="quote-section" class="quote-section">
-    <div id="quote-display" class="quote-display">
-        <p id="quote-text">Loading a quote...</p>
-    </div>
-</section>
+
+    <section id="quote-section" class="quote-section">
+        <div id="quote-display" class="quote-display">
+            <p id="quote-text">Loading a quote...</p>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2025 Calm Bot</p>
     </footer>
-        <script defer src="script.js"></script>
+
+    <script>
+        function enterSite() {
+            document.body.classList.add('loaded');
+        }
+    </script>
+
+    <script defer src="script.js"></script>
 
 </body>
 </html>
