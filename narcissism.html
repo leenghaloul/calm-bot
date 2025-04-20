@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autism Assessment</title>
+    <title>Narcissism Assessment</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +22,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            color: #0066cc;
+            color: darkorange;
             text-align: center;
             font-size: 32px;
         }
@@ -59,14 +59,14 @@
         button {
             font-size: 22px;
             padding: 10px 20px;
-            background-color: #0066cc;
+            background-color: darkorange;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0055a5;
+            background-color: orange;
         }
         .back-button {
             margin-top: 20px;
@@ -85,39 +85,40 @@
 <body>
 
     <div class="container">
-        <h1>Autism Assessment</h1>
-        <p>Please answer the following questions to help assess possible symptoms of autism.</p>
+        <h1>Narcissism Assessment</h1>
+        <p>Please answer the following questions to help assess possible symptoms of narcissism.</p>
         <form id="assessmentForm">
-            <div class="question">
-                <label for="question1">1. Do you often have difficulty making eye contact with others?</label><br>
-                <input type="radio" name="q1" value="0" id="q1_0"> Never
-                <input type="radio" name="q1" value="1" id="q1_1"> Sometimes
-                <input type="radio" name="q1" value="2" id="q1_2"> Frequently
-            </div>
-            <div class="question">
-                <label for="question2">2. Do you struggle with understanding or using gestures, facial expressions, or body language?</label><br>
-                <input type="radio" name="q2" value="0" id="q2_0"> Never
-                <input type="radio" name="q2" value="1" id="q2_1"> Sometimes
-                <input type="radio" name="q2" value="2" id="q2_2"> Frequently
-            </div>
-            <div class="question">
-                <label for="question3">3. Do you find it difficult to maintain conversations or sustain interest in them?</label><br>
-                <input type="radio" name="q3" value="0" id="q3_0"> Never
-                <input type="radio" name="q3" value="1" id="q3_1"> Sometimes
-                <input type="radio" name="q3" value="2" id="q3_2"> Frequently
-            </div>
-            <div class="question">
-                <label for="question4">4. Do you have repetitive movements or behaviors (such as rocking or hand-flapping)?</label><br>
-                <input type="radio" name="q4" value="0" id="q4_0"> Never
-                <input type="radio" name="q4" value="1" id="q4_1"> Sometimes
-                <input type="radio" name="q4" value="2" id="q4_2"> Frequently
-            </div>
-            <div class="question">
-                <label for="question5">5. Do you find it difficult to adapt to changes in routine or environment?</label><br>
-                <input type="radio" name="q5" value="0" id="q5_0"> Never
-                <input type="radio" name="q5" value="1" id="q5_1"> Sometimes
-                <input type="radio" name="q5" value="2" id="q5_2"> Frequently
-            </div>
+           <div class="question">
+    <label for="question1">1. Do you often feel superior to others?</label><br>
+    <input type="radio" name="q1" value="0" id="q1_0"> Never
+    <input type="radio" name="q1" value="1" id="q1_1"> Sometimes
+    <input type="radio" name="q1" value="2" id="q1_2"> Frequently
+</div>
+<div class="question">
+    <label for="question2">2. Do you crave admiration or validation from others?</label><br>
+    <input type="radio" name="q2" value="0" id="q2_0"> Never
+    <input type="radio" name="q2" value="1" id="q2_1"> Sometimes
+    <input type="radio" name="q2" value="2" id="q2_2"> Frequently
+</div>
+<div class="question">
+    <label for="question3">3. Do you often fantasize about success, power, beauty, or ideal love?</label><br>
+    <input type="radio" name="q3" value="0" id="q3_0"> Never
+    <input type="radio" name="q3" value="1" id="q3_1"> Sometimes
+    <input type="radio" name="q3" value="2" id="q3_2"> Frequently
+</div>
+<div class="question">
+    <label for="question4">4. Do you struggle to recognize or care about other people's feelings?</label><br>
+    <input type="radio" name="q4" value="0" id="q4_0"> Never
+    <input type="radio" name="q4" value="1" id="q4_1"> Sometimes
+    <input type="radio" name="q4" value="2" id="q4_2"> Frequently
+</div>
+<div class="question">
+    <label for="question5">5. Do you often expect special treatment or believe rules don't apply to you?</label><br>
+    <input type="radio" name="q5" value="0" id="q5_0"> Never
+    <input type="radio" name="q5" value="1" id="q5_1"> Sometimes
+    <input type="radio" name="q5" value="2" id="q5_2"> Frequently
+</div>
+
             <button type="button" onclick="calculateResult()">Submit</button>
         </form>
 
@@ -141,13 +142,13 @@
 
             // Result based on total score
             if (totalScore <= 5) {
-                resultText = "Your score is " + totalScore + "/10. You do not show significant symptoms of autism.";
+                resultText = "Your score is " + totalScore + "/10. You do not show significant symptoms of narcissism.";
                 resultClass = "success";
             } else if (totalScore <= 10) {
-                resultText = "Your score is " + totalScore + "/10. You might be experiencing mild symptoms of autism. Consider talking to a professional.";
+                resultText = "Your score is " + totalScore + "/10. You might be experiencing mild symptoms of narcissism. Consider talking to a professional.";
                 resultClass = "warning";
             } else {
-                resultText = "Your score is " + totalScore + "/10. You may be experiencing significant symptoms. It's important to seek professional help.";
+                resultText = "Your score is " + totalScore + "/10. You may be experiencing significant symptoms of narcissism. It's important to seek professional help.";
                 resultClass = "danger";
             }
 
