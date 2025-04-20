@@ -92,7 +92,7 @@
       <svg class="mouth" width="160" height="60" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M20 10 Q80 50 140 10" stroke="#00f5ff" stroke-width="18" stroke-linecap="round" fill="none" />
       </svg>
-      <div class="splash-text">Click to continue</div>
+      <div class="splash-text">Click here</div>
     </div>
   </div>
 
@@ -124,18 +124,40 @@
   </footer>
 
   <script>
+    // Show splash screen once per session
+    const splash = document.getElementById('splash-screen');
+
     function enterSite() {
-    document.body.classList.add('loaded');
-    sessionStorage.setItem('splashShown', 'true');
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    if (sessionStorage.getItem('splashShown')) {
         document.body.classList.add('loaded');
+        sessionStorage.setItem('splashShown', 'true');
     }
-});
 
-  </script>
+    // Check if splash has been shown before
+    window.addEventListener('DOMContentLoaded', () => {
+        if (sessionStorage.getItem('splashShown')) {
+            document.body.classList.add('loaded');
+        }
+    });
+
+    // -------- Inactivity Timer Logic --------
+    let inactivityTimer;
+
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(() => {
+            sessionStorage.removeItem('splashShown'); // Reset session
+            document.body.classList.remove('loaded'); // Show splash again
+        }, 15000); // 15 seconds of inactivity
+    }
+
+    // Listen for user activity
+    ['mousemove', 'keydown', 'scroll', 'click'].forEach(event => {
+        document.addEventListener(event, resetInactivityTimer);
+    });
+
+    resetInactivityTimer(); // Start timer on load
+</script>
+
 
   <script defer src="script.js"></script>
 
