@@ -42,39 +42,40 @@
     }
 
     .goal-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-.goal-card {
-  width: 120px;
-  height: 120px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
+    .goal-card {
+      width: 120px;
+      height: 120px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     .goal-icon {
-  font-size: 2rem;
-  margin-bottom: 0.25rem;
-}
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
 
-
+    .goal-text {
+      font-size: 0.85rem;
+    }
 
     .dropdown {
       margin: 1rem auto;
@@ -153,16 +154,16 @@
 
 <main>
   <div class="goal-grid">
-    <div class="goal-card" data-category="religious">🙏<br>Religious</div>
-    <div class="goal-card" data-category="nutrition">🥗<br>Nutrition</div>
-    <div class="goal-card" data-category="sports">🏋️‍♂️<br>Sports</div>
-    <div class="goal-card" data-category="hobbies">🎨<br>Hobbies</div>
-    <div class="goal-card" data-category="work">💼<br>Work</div>
-    <div class="goal-card" data-category="relationships">❤️<br>Relationships</div>
-    <div class="goal-card" data-category="study">📘<br>Study</div>
-    <div class="goal-card" data-category="mental">🧘<br>Mental Health</div>
-    <div class="goal-card" data-category="finance">💰<br>Finance</div>
-    <div class="goal-card" data-category="custom">➕<br>Custom</div>
+    <div class="goal-card" data-category="religious"><span class="goal-icon">🙏</span><span class="goal-text">Religious</span></div>
+    <div class="goal-card" data-category="nutrition"><span class="goal-icon">🥗</span><span class="goal-text">Nutrition</span></div>
+    <div class="goal-card" data-category="sports"><span class="goal-icon">🏋️‍♂️</span><span class="goal-text">Sports</span></div>
+    <div class="goal-card" data-category="hobbies"><span class="goal-icon">🎨</span><span class="goal-text">Hobbies</span></div>
+    <div class="goal-card" data-category="work"><span class="goal-icon">💼</span><span class="goal-text">Work</span></div>
+    <div class="goal-card" data-category="relationships"><span class="goal-icon">❤️</span><span class="goal-text">Relationships</span></div>
+    <div class="goal-card" data-category="study"><span class="goal-icon">📘</span><span class="goal-text">Study</span></div>
+    <div class="goal-card" data-category="mental"><span class="goal-icon">🧘</span><span class="goal-text">Mental Health</span></div>
+    <div class="goal-card" data-category="finance"><span class="goal-icon">💰</span><span class="goal-text">Finance</span></div>
+    <div class="goal-card" data-category="custom"><span class="goal-icon">➕</span><span class="goal-text">Custom</span></div>
   </div>
 
   <div class="dropdown" id="subcategoryDropdown">
@@ -172,7 +173,6 @@
     </select>
   </div>
 
-  
 </main>
 <br><br>
 <footer>
@@ -290,8 +290,6 @@
     trackerWrapper.style.display = 'block';
   }
 </script>
-
-
 
 </body>
 </html>
