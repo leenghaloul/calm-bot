@@ -38,17 +38,18 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: var(--font-sans); }
 
-    /* ===== Container ===== */
-    .container {
-      width: 95%;
-      height: 100%;
-      background: var(--surface);
-      border-radius: 16px;
-      box-shadow: 0 12px 48px var(--surface-shadow);
-      display: grid;
-      grid-template-rows: auto 1fr;
-      overflow: hidden;
-    }
+   /* ===== Container ===== */
+.container {
+  width: 90vw;
+  max-width: 1200px;
+  height: 100%;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 12px 48px var(--surface-shadow);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+}
 
     /* ===== Header ===== */
     header {
@@ -207,13 +208,13 @@ main {
       color: var(--primary-dark);
     }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 800px) {
-      .container { width: 100%; padding: 0; }
-      .entries table { min-width: unset; }
-      .journal-form textarea { min-height: 120px; }
-      .entries th, .entries td { padding: 0.5rem 1rem; }
-    }
+  @media (max-width: 800px) {
+  .container {
+    width: 95vw;
+    padding: 0;
+  }
+}
+
   </style>
 </head>
 <body>
