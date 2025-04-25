@@ -170,21 +170,29 @@
   }
 
   /* ===== Entries List ===== */
+ 
   .entries {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 8px 24px var(--surface-shadow);
-    overflow-x: auto;              /* ✅ Added for horizontal scroll only when needed */
-  }
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px var(--surface-shadow);
+  overflow-x: auto; /* ✅ Still lets it scroll if ever needed */
+  width: 100%;
+}
+.entries colgroup col:nth-child(1) { width: 25%; }
+.entries colgroup col:nth-child(2) { width: 65%; }
+.entries colgroup col:nth-child(3) { width: 10%; }
+
 
   .entries table {
-    width: 100%;
-    table-layout: auto;            /* ✅ Let it adjust */
-    min-width: unset;              /* ✅ Removed fixed min-width */
-    border-collapse: separate;
-    border-spacing: 0 0.5rem;
-  }
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  /* Remove the line below */
+  /* min-width: 700px; */
+  word-break: break-word;  /* ✅ Ensures long text wraps */
+  table-layout: fixed;     /* ✅ Ensures it fits the container */
+}
 
   .entries colgroup col:nth-child(1) { width: 30%; }
   .entries colgroup col:nth-child(2) { width: 60%; }
