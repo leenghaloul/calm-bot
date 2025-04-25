@@ -82,6 +82,48 @@
     height: 400px;
     overflow-y: auto;
 }
+/* RESPONSIVE FIXES FOR MOBILE ONLY */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .greeting-section {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .category-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .chatbot {
+    height: 300px;
+    font-size: 1.2rem;
+  }
+
+  /* Doodles: same position, just a little smaller */
+  .doodle-top-left {
+    max-width: 60px;
+  }
+
+  .doodle-top-right {
+    max-width: 70px;
+  }
+
+  .doodle-bottom-left {
+    max-width: 90px;
+  }
+
+  .doodle-bottom-right {
+    max-width: 100px;
+  }
+}
 
   </style>
 </head>
