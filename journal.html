@@ -29,36 +29,39 @@
     height: 100%;
     margin: 0;
     max-width: 100%;              /* ✅ Prevent horizontal overflow */
-    overflow-x: hidden;           /* ✅ Prevent horizontal scroll */
+    overflow-x: hidden;   
+            /* ✅ Prevent horizontal scroll */
   }
   body {
-    font-family: var(--font-sans);
-    background: var(--bg-gradient);
-    color: var(--text-main);
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    padding: 1rem;
-   overflow-x: hidden;   /* ✅ Prevent horizontal scroll */
-  overflow-y: auto;     
-  }
+  font-family: var(--font-sans);
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 1rem;
+  overflow-y: auto;     /* ✅ scrolls down only */
+  overflow-x: hidden;   /* ✅ disables side scroll */
+}
+
+.container {
+  width: 90vw;
+  max-width: 1200px;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 12px 48px var(--surface-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;  /* ✅ don't allow it to overflow itself */
+  height: 100%; /* Ensure container takes full viewport height */
+}
+
 
   a { text-decoration: none; color: inherit; }
   button { font-family: var(--font-sans); }
 
   /* ===== Container ===== */
-  .container {
-    width: 90vw;
-    max-width: 1200px;
-    height: 100%;
-    background: var(--surface);
-    border-radius: 16px;
-    box-shadow: 0 12px 48px var(--surface-shadow);
-    display: grid;
-    grid-template-rows: auto 1fr;
-    overflow: visible;      /* ✅ Allow it to grow */
-  margin-bottom: 2rem; 
-  }
+  
   /* ===== Main ===== */
   main {
     
@@ -176,9 +179,12 @@
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 8px 24px var(--surface-shadow);
-  overflow-x: auto; /* ✅ Still lets it scroll if ever needed */
+  overflow: hidden; /* Prevent horizontal overflow */
   width: 100%;
+  flex-grow: 1; /* Allow it to take available space */
+  max-height: 500px; /* Set a max height (adjust as needed) */
 }
+
 .entries colgroup col:nth-child(1) { width: 25%; }
 .entries colgroup col:nth-child(2) { width: 65%; }
 .entries colgroup col:nth-child(3) { width: 10%; }
@@ -188,10 +194,9 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 0.5rem;
-  /* Remove the line below */
-  /* min-width: 700px; */
-  word-break: break-word;  /* ✅ Ensures long text wraps */
-  table-layout: fixed;     /* ✅ Ensures it fits the container */
+  word-break: break-word;
+  table-layout: fixed;
+  height: auto; /* Let the table height adjust to content */
 }
 
   .entries colgroup col:nth-child(1) { width: 30%; }
@@ -226,6 +231,10 @@
     border: none;
     text-align: center;
   }
+  .entries tbody {
+  max-height: 400px; /* Adjust based on design */
+  overflow-y: auto;  /* Enable scrolling if content overflows */
+}
 
   .entries tbody tr {
     background: var(--surface);
