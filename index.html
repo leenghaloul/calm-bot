@@ -7,72 +7,71 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
-  <style>
-    .icons { width: 55%; height: 82%; }
-    /* ===== Splash Screen Styles (unchanged) ===== */
-    #splash-screen { position: fixed; inset: 0; background-color: #0b0c10; display: flex; align-items: center; justify-content: center; flex-direction: column; z-index: 9999; transition: opacity 0.6s ease; }
-    .robot-face { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: white; transform: scale(1.1); }
-    .eyes { display: flex; gap: 70px; margin-bottom: 25px; }
-    .eye { width: 65px; height: 65px; background-color: #00f5ff; border-radius: 50%; box-shadow: 0 0 15px #00f5ff; }
-    .mouth { margin-top: 10px; filter: drop-shadow(0 0 12px #00f5ff); }
-    .splash-text { margin-top: 20px; font-size: 1.7rem; color: #00f5ff; text-shadow: 0 0 7px #00f5ff; font-family: "Quicksand", "Segoe UI", sans-serif; font-weight: 600; }
-    body.loaded #splash-screen { opacity: 0; pointer-events: none; }
+ <style>
+  .icons { width: 55%; height: 82%; }
+  /* ===== Splash Screen Styles (unchanged) ===== */
+  #splash-screen { position: fixed; inset: 0; background-color: #0b0c10; display: flex; align-items: center; justify-content: center; flex-direction: column; z-index: 9999; transition: opacity 0.6s ease; }
+  .robot-face { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: white; transform: scale(1.1); }
+  .eyes { display: flex; gap: 70px; margin-bottom: 25px; }
+  .eye { width: 65px; height: 65px; background-color: #00f5ff; border-radius: 50%; box-shadow: 0 0 15px #00f5ff; }
+  .mouth { margin-top: 10px; filter: drop-shadow(0 0 12px #00f5ff); }
+  .splash-text { margin-top: 20px; font-size: 1.7rem; color: #00f5ff; text-shadow: 0 0 7px #00f5ff; font-family: "Quicksand", "Segoe UI", sans-serif; font-weight: 600; }
+  body.loaded #splash-screen { opacity: 0; pointer-events: none; }
 
-    /* ===== Base Styles ===== */
-    body { overflow-x: hidden; margin: 0; font-family: 'Quicksand', sans-serif; background-color: #f7faff; color: #2e2e2e; }
-    header { background-color: #e2f0eb; padding: 2rem; text-align: center; border-bottom: 3px solid #b6dccf; position: relative; }
-    header h1 { font-size: 2.8rem; color: #2f5d50; }
-    nav { background-color: #d4efe4; padding: 1rem; display: flex; justify-content: center; gap: 2rem; border-bottom: 2px solid #a8d4c4; position: relative; 
-  z-index: 0 ; }
-    nav a { text-decoration: none; color: #2f5d50; font-weight: bold; font-size: 1.1rem; }
+  /* ===== Base Styles ===== */
+  html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  body { font-family: 'Quicksand', sans-serif; background-color: #f7faff; color: #2e2e2e; }
+  header { background-color: #e2f0eb; padding: 2rem; text-align: center; border-bottom: 3px solid #b6dccf; position: relative; }
+  header h1 { font-size: 2.8rem; color: #2f5d50; }
+  nav { background-color: #d4efe4; padding: 1rem; display: flex; justify-content: center; gap: 2rem; border-bottom: 2px solid #a8d4c4; position: relative; z-index: 0; }
+  nav a { text-decoration: none; color: #2f5d50; font-weight: bold; font-size: 1.1rem; }
 
-    /* ===== Main Layout ===== */
-    .main-content { padding: 2rem; display: flex; flex-direction: column; align-items: center; position: relative; }
-    .greeting-section {
-  background-color: #; /* very soft mint green */
-  border: 2px solid #b6dccf; /* subtle, clean border */
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 20px rgba(47, 93, 80, 0.08); /* soft pastel shadow */
-  padding: 1.2rem;
-  text-align: center;
-  max-height: 200px;
-  max-width: 420px;
-  margin-bottom: 2.5rem;
-  position: relative;
-  overflow: visible;
-  transition: all 0.3s ease-in-out;
-}
+  /* ===== Main Layout ===== */
+  .main-content { padding: 2rem; display: flex; flex-direction: column; align-items: center; position: relative; }
+  .greeting-section {
+    background-color: #; /* very soft mint green */
+    border: 2px solid #b6dccf;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 20px rgba(47, 93, 80, 0.08);
+    padding: 1.2rem;
+    text-align: center;
+    max-height: 200px;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    position: relative;
+    overflow: visible;
+    transition: all 0.3s ease-in-out;
+  }
 
-    .emoji-scale {  display: flex; justify-content: space-around; margin-top: 1rem; }
-    .emoji-scale a { flex: 1; text-align: center; font-size: 2rem; color: #2f5d50; transition: transform 0.2s; }
-    .emoji-scale a:hover { transform: scale(1.2); }
+  .emoji-scale { display: flex; justify-content: space-around; margin-top: 1rem; }
+  .emoji-scale a { flex: 1; text-align: center; font-size: 2rem; color: #2f5d50; transition: transform 0.2s; }
+  .emoji-scale a:hover { transform: scale(1.2); }
 
-    /* ===== Cards ===== */
-    .category-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; width: 100%; max-width: 1000px; position: relative; padding: 2rem 0; }
-    .card { background: linear-gradient(135deg, #d8f3e5, #f6faf7); border-radius: 1.2rem; padding: 1.2rem; text-align: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); position: relative; overflow: visible; }
-    .card img { width: 100px; height: 100px; object-fit: cover; border-radius: 1rem; margin-bottom: 1rem; }
+  /* ===== Cards ===== */
+  .category-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; width: 100%; max-width: 1000px; position: relative; padding: 2rem 0; }
+  .card { background: linear-gradient(135deg, #d8f3e5, #f6faf7); border-radius: 1.2rem; padding: 1.2rem; text-align: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); position: relative; overflow: visible; }
+  .card img { width: 100px; height: 100px; object-fit: cover; border-radius: 1rem; margin-bottom: 1rem; }
 
-    /* ===== Quote ===== */
-    .quote-section { margin-top: 3rem; background: #e9f5ed; padding: 2rem; border-radius: 1rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); font-style: italic; color: #4e6d5e; max-width: 8000px; margin: 0 auto; position: relative; overflow: visible; }
+  /* ===== Quote ===== */
+  .quote-section { margin-top: 3rem; background: #e9f5ed; padding: 2rem; border-radius: 1rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); font-style: italic; color: #4e6d5e; max-width: 8000px; margin: 0 auto; position: relative; overflow: visible; }
 
-    /* ===== Footer ===== */
-    footer { text-align: center; padding: 1rem; background-color: #e2f0eb; border-top: 2px solid #b6dccf; margin-top: 4rem; color: #2f5d50; position: relative; }
+  /* ===== Footer ===== */
+  footer { text-align: center; padding: 1rem; background-color: #e2f0eb; border-top: 2px solid #b6dccf; margin-top: 4rem; color: #2f5d50; position: relative; }
 
-    /* ===== Doodles ===== */
-    .doodle {position: absolute; width: 160px; pointer-events: none;z-index: 10;   }
+  /* ===== Doodles ===== */
+  .doodle { position: absolute; width: 160px; pointer-events: none; z-index: 10; }
+  .doodle-top-left, .doodle-top-right { z-index: 10; }
+  .doodle-top-left  { max-width: 75px; top: 285px; left: 400px; transform: scale(1.5) scaleX(-1); }
+  .doodle-top-right { top: 145px; right: 40px; transform: scale(2) rotate(270deg) scaleX(-1); }
+  .doodle-bottom-left { max-width: 150px; bottom: 7px; left: 950px; transform: scale(1.5) scaleX(-1); }
+  .doodle-bottom-right { bottom: -20px; right: -20px; }
 
-.doodle-top-left,
-.doodle-top-right
- {
-  z-index: 10;        /* any number >1 will work */
-}
-    .doodle-top-left { max-width: 75px; top: 285px; left: 400px; transform: scale(1.5)scaleX(-1) }
-    .doodle-top-right { top: 145px; right: 40px;  transform: scale(2)rotate(270deg)scaleX(-1);}
-    .doodle-bottom-left { max-width: 150px;bottom: 7px; left: 950px; transform: scale(1.5)scaleX(-1)}
-    .doodle-bottom-right { bottom: -20px; right: -20px; }
-    .chatbot {
-     /* Set a max width to prevent it from becoming too large */
-    border-radius: 15px;  /* Rounded corners */
+  .chatbot {
+    border-radius: 15px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
@@ -81,51 +80,39 @@
     flex-direction: column;
     height: 400px;
     overflow-y: auto;
-}
-/* RESPONSIVE FIXES FOR MOBILE ONLY */
-@media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
   }
 
-  .main-content {
-    padding: 1rem;
-  }
+  /* RESPONSIVE FIXES FOR MOBILE ONLY */
+  @media (max-width: 768px) {
+    .main-content { padding: 1rem; }
+    .greeting-section { max-width: 100%; padding: 1rem; }
+    .category-cards { grid-template-columns: 1fr; gap: 1.5rem; }
+    .chatbot { height: 300px; font-size: 1.2rem; }
 
-  .greeting-section {
-    max-width: 100%;
-    padding: 1rem;
+    /* Doodles: same corners, just repositioned to fit mobile */
+    .doodle-top-left {
+      top: 20px !important;
+      left: 20px !important;
+      max-width: 60px;
+    }
+    .doodle-top-right {
+      top: 20px !important;
+      right: 20px !important;
+      max-width: 70px;
+    }
+    .doodle-bottom-left {
+      bottom: 20px !important;
+      left: 20px !important;
+      max-width: 90px;
+    }
+    .doodle-bottom-right {
+      bottom: 20px !important;
+      right: 20px !important;
+      max-width: 100px;
+    }
   }
+</style>
 
-  .category-cards {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .chatbot {
-    height: 300px;
-    font-size: 1.2rem;
-  }
-
-  /* Doodles: same position, just a little smaller */
-  .doodle-top-left {
-    max-width: 60px;
-  }
-
-  .doodle-top-right {
-    max-width: 70px;
-  }
-
-  .doodle-bottom-left {
-    max-width: 90px;
-  }
-
-  .doodle-bottom-right {
-    max-width: 100px;
-  }
-}
-
-  </style>
 </head>
 <body>
   <!-- Splash Screen (unchanged) -->
