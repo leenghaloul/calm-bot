@@ -7,237 +7,264 @@
   <!-- Inter Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ===== Global Variables ===== */
-    :root {
-      --bg-gradient: linear-gradient(135deg, #dbf4f8 0%, #fcefee 100%);
-      --surface: #ffffffcc;
-      --surface-shadow: rgba(0, 0, 0, 0.06);
-      --primary: #a8d8ea;
-      --primary-dark: #6ebbd1;
-      --accent: #ffb3ba;
-      --text-main: #333f48;
-      --text-muted: #657781;
-      --divider: rgba(0, 0, 0, 0.08);
-      --font-sans: 'Inter', sans-serif;
-      --font-mono: 'Courier New', monospace;
-      --transition: 0.3s ease;
-    }
-    /* ===== Reset & Base ===== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; margin: 0; }
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg-gradient);
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      align-items: start;
-      padding: 1rem;
-      overflow: auto;
-    }
-    a { text-decoration: none; color: inherit; }
-    button { font-family: var(--font-sans); }
-
-
-   /* ===== Container ===== */
-.container {
-  width: 90vw;
-  max-width: 1200px;
-  height: 100%;
-  background: var(--surface);
-  border-radius: 16px;
-  box-shadow: 0 12px 48px var(--surface-shadow);
-  display: grid;
-  grid-template-rows: auto 1fr;
-  overflow: auto;
-}
-
-    /* ===== Header ===== */
-    header {
-      background: var(--primary);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-        border-top-left-radius: 16px;
-                border-top-right-radius: 16px;
-
-
-      align-items: center;
-        border-bottom: 2px solid #326070;
-        border-top: 2px solid #326070;
-        border-right: 2px solid #326070;
-        border-left: 2px solid #326070;
-
-                   
-
-
-    }
-    header h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #326070;
-    }
-    header nav a {
-      
-      border-radius: 1px;
-      font-weight: 500;
-      transition: background var(--transition), color var(--transition);
-      color: #326070;
-    }
-   
-    /* ===== Main ===== */
-    /* ===== Main ===== */
-main {
-  padding: 2rem;
-  overflow-y: auto;
-  display: grid;
-  grid-auto-rows: auto;
-  /* gap: 2rem; Removed */
-}
-
-
-/* ===== Journal Form ===== */
-.journal-form {
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 24px var(--surface-shadow);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: 300px; /* Or any height you prefer */
-  justify-content: space-between;
-  margin-bottom: 0.5rem; /* Small margin to reduce space between sections */
-
-
-}
-
-    .journal-form label {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-    .journal-form textarea {
-      width: 100%;
-      min-height: 140px;
-      padding: 1rem;
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      color: var(--text-main);
-      border: 1px solid var(--divider);
-      border-radius: 8px;
-      resize: vertical;
-      line-height: 1.5;
-      background-image:
-        repeating-linear-gradient(
-          transparent, transparent 28px,
-          var(--divider) 29px
-        );
-      background-size: 100% 30px;
-      background-attachment: local;
-      transition: border var(--transition), box-shadow var(--transition);
-    }
-    .journal-form textarea:focus {
-      border-color: var(--primary-dark);
-      box-shadow: 0 0 0 4px rgba(110, 187, 209, 0.3);
-      outline: none;
-    }
-    .journal-form .btn-save {
-      align-self: flex-end;
-      padding: 0.75rem 1.5rem;
-      background: var(--primary-dark);
-      color: #326070;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background var(--transition), transform 0.1s;
-    }
-    .journal-form .btn-save:hover {
-      background: var(--primary);
-      transform: translateY(-2px);
-    }
-    .journal-form .btn-save:active {
-      transform: translateY(1px);
-    }
-
-    /* ===== Entries List ===== */
-    .entries {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 8px 24px var(--surface-shadow);
-      overflow-x: auto;
-    }
-    .entries table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 0.5rem;
-      min-width: 700px;
-    }
-    .entries colgroup col:nth-child(1) { width: 30%; }
-    .entries colgroup col:nth-child(2) { width: 60%; }
-    .entries colgroup col:nth-child(3) { width: 10%; }
-    .entries thead th {
-      background: var(--primary-dark);
-      color: #326070;
-      padding: 0.75rem 1.5rem;
-      font-weight: 500;
-      position: sticky;
-      top: 0;
-      text-align: left;
-      letter-spacing: 0.5px;
-    }
-    .entries th, .entries td {
-      padding: 0.75rem 1.5rem;
-      font-size: 0.95rem;
-      vertical-align: top;
-    }
-    .entries th:first-child,
-    .entries td:first-child {
-      border-right: 2px solid var(--divider);
-    }
-    .entries th:last-child,
-    .entries td:last-child {
-      background: transparent;
-      border: none;
-      text-align: center;
-    }
-    .entries tbody tr {
-      background: var(--surface);
-      transition: transform var(--transition), box-shadow var(--transition);
-
-    }
-    .entries tbody tr:hover {   
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px var(--surface-shadow);
-    }
-
-
-    .delete-btn {
-      background: none;
-      border: none;
-      color: var(--accent);
-      font-weight: 500;
-      cursor: pointer;
-      transition: color var(--transition);
-    }
-    .delete-btn:hover {
-      color: var(--primary-dark);
-    }
-
-
-
-  @media  {
-  .container {
-    width: 95%;
-    padding: 0;
-
+  /* ===== Global Variables ===== */
+  :root {
+    --bg-gradient: linear-gradient(135deg, #dbf4f8 0%, #fcefee 100%);
+    --surface: #ffffffcc;
+    --surface-shadow: rgba(0, 0, 0, 0.06);
+    --primary: #a8d8ea;
+    --primary-dark: #6ebbd1;
+    --accent: #ffb3ba;
+    --text-main: #333f48;
+    --text-muted: #657781;
+    --divider: rgba(0, 0, 0, 0.08);
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --transition: 0.3s ease;
   }
-}
 
-  </style>
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    margin: 0;
+    max-width: 100%;              /* ✅ Prevent horizontal overflow */
+    overflow-x: hidden;           /* ✅ Prevent horizontal scroll */
+  }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 1rem;
+    overflow: auto;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  button { font-family: var(--font-sans); }
+
+  /* ===== Container ===== */
+  .container {
+    width: 90vw;
+    max-width: 1200px;
+    height: 100%;
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: 0 12px 48px var(--surface-shadow);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: auto;
+  }
+
+  /* ===== Header ===== */
+  header {
+    background: var(--primary);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom: 2px solid #326070;
+    border-top: 2px solid #326070;
+    border-right: 2px solid #326070;
+    border-left: 2px solid #326070;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #326070;
+  }
+
+  header nav a {
+    border-radius: 1px;
+    font-weight: 500;
+    transition: background var(--transition), color var(--transition);
+    color: #326070;
+  }
+
+  /* ===== Main ===== */
+  main {
+    padding: 2rem;
+    overflow-y: auto;
+    display: grid;
+    grid-auto-rows: auto;
+  }
+
+  /* ===== Journal Form ===== */
+  .journal-form {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px var(--surface-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 300px;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .journal-form label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .journal-form textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--text-main);
+    border: 1px solid var(--divider);
+    border-radius: 8px;
+    resize: vertical;
+    line-height: 1.5;
+    background-image:
+      repeating-linear-gradient(
+        transparent, transparent 28px,
+        var(--divider) 29px
+      );
+    background-size: 100% 30px;
+    background-attachment: local;
+    transition: border var(--transition), box-shadow var(--transition);
+  }
+
+  .journal-form textarea:focus {
+    border-color: var(--primary-dark);
+    box-shadow: 0 0 0 4px rgba(110, 187, 209, 0.3);
+    outline: none;
+  }
+
+  .journal-form .btn-save {
+    align-self: flex-end;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-dark);
+    color: #326070;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition), transform 0.1s;
+  }
+
+  .journal-form .btn-save:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  .journal-form .btn-save:active {
+    transform: translateY(1px);
+  }
+
+  /* ===== Entries List ===== */
+  .entries {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 8px 24px var(--surface-shadow);
+    overflow-x: auto;              /* ✅ Added for horizontal scroll only when needed */
+  }
+
+  .entries table {
+    width: 100%;
+    table-layout: auto;            /* ✅ Let it adjust */
+    min-width: unset;              /* ✅ Removed fixed min-width */
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
+  }
+
+  .entries colgroup col:nth-child(1) { width: 30%; }
+  .entries colgroup col:nth-child(2) { width: 60%; }
+  .entries colgroup col:nth-child(3) { width: 10%; }
+
+  .entries thead th {
+    background: var(--primary-dark);
+    color: #326070;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    text-align: left;
+    letter-spacing: 0.5px;
+  }
+
+  .entries th, .entries td {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    vertical-align: top;
+  }
+
+  .entries th:first-child,
+  .entries td:first-child {
+    border-right: 2px solid var(--divider);
+  }
+
+  .entries th:last-child,
+  .entries td:last-child {
+    background: transparent;
+    border: none;
+    text-align: center;
+  }
+
+  .entries tbody tr {
+    background: var(--surface);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .entries tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px var(--surface-shadow);
+  }
+
+  .delete-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-weight: 500;
+    cursor: pointer;
+    transition: color var(--transition);
+  }
+
+  .delete-btn:hover {
+    color: var(--primary-dark);
+  }
+
+  /* ===== Responsive Fixes ===== */
+  @media (max-width: 768px) {
+    .container {
+      width: 100%;
+      padding: 0.5rem;
+    }
+
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    header nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    .entries table {
+      font-size: 0.8rem;  /* ✅ Smaller text on small screens */
+    }
+  }
+</style>
+
 </head>
 <body>
   <div class="container">
