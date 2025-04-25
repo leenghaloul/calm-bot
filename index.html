@@ -7,8 +7,9 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
- <style>
+<style>
   .icons { width: 55%; height: 82%; }
+
   /* ===== Splash Screen Styles (unchanged) ===== */
   #splash-screen { position: fixed; inset: 0; background-color: #0b0c10; display: flex; align-items: center; justify-content: center; flex-direction: column; z-index: 9999; transition: opacity 0.6s ease; }
   .robot-face { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: white; transform: scale(1.1); }
@@ -20,7 +21,7 @@
 
   /* ===== Base Styles ===== */
   html, body {
-    overflow-x: hidden;
+    overflow-x: hidden;  /* prevent sideways scroll everywhere */
     margin: 0;
     padding: 0;
   }
@@ -33,7 +34,7 @@
   /* ===== Main Layout ===== */
   .main-content { padding: 2rem; display: flex; flex-direction: column; align-items: center; position: relative; }
   .greeting-section {
-    background-color: #; /* very soft mint green */
+    /* background-color invalid, leaving unchanged */
     border: 2px solid #b6dccf;
     border-radius: 1.5rem;
     box-shadow: 0 8px 20px rgba(47, 93, 80, 0.08);
@@ -57,7 +58,19 @@
   .card img { width: 100px; height: 100px; object-fit: cover; border-radius: 1rem; margin-bottom: 1rem; }
 
   /* ===== Quote ===== */
-  .quote-section { margin-top: 3rem; background: #e9f5ed; padding: 2rem; border-radius: 1rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); font-style: italic; color: #4e6d5e; max-width: 8000px; margin: 0 auto; position: relative; overflow: visible; }
+  .quote-section {
+    margin-top: 3rem;
+    background: #e9f5ed;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    font-style: italic;
+    color: #4e6d5e;
+    max-width: 8000px; /* overridden on mobile */
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+  }
 
   /* ===== Footer ===== */
   footer { text-align: center; padding: 1rem; background-color: #e2f0eb; border-top: 2px solid #b6dccf; margin-top: 4rem; color: #2f5d50; position: relative; }
@@ -80,16 +93,25 @@
     flex-direction: column;
     height: 400px;
     overflow-y: auto;
+    max-width: 100%; /* ensure it never exceeds viewport */
   }
 
-  /* RESPONSIVE FIXES FOR MOBILE ONLY */
+  /* ===== RESPONSIVE FIXES FOR MOBILE ONLY ===== */
   @media (max-width: 768px) {
-    .main-content { padding: 1rem; }
-    .greeting-section { max-width: 100%; padding: 1rem; }
-    .category-cards { grid-template-columns: 1fr; gap: 1.5rem; }
-    .chatbot { height: 300px; font-size: 1.2rem; }
+    header { padding: 1rem; }
+    nav {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 0.5rem;
+    }
+    nav a { font-size: 1rem; }
+    .main-content { padding: 1rem; width: 100%; }
+    .greeting-section { max-width: 100%; margin-bottom: 1.5rem; padding: 1rem; }
+    .category-cards { grid-template-columns: 1fr; gap: 1rem; }
+    .quote-section { max-width: 100%; padding: 1rem; }
+    .chatbot { width: 100%; height: 300px; }
 
-    /* Doodles: same corners, just repositioned to fit mobile */
+    /* Doodles keep corners but shrink & reposition slightly */
     .doodle-top-left {
       top: 20px !important;
       left: 20px !important;
@@ -112,6 +134,7 @@
     }
   }
 </style>
+
 
 </head>
 <body>
