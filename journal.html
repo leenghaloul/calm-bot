@@ -39,7 +39,8 @@
     justify-content: center;
     align-items: start;
     padding: 1rem;
-    overflow: auto;
+   overflow-x: hidden;   /* ✅ Prevent horizontal scroll */
+  overflow-y: auto;     
   }
 
   a { text-decoration: none; color: inherit; }
@@ -55,8 +56,19 @@
     box-shadow: 0 12px 48px var(--surface-shadow);
     display: grid;
     grid-template-rows: auto 1fr;
-    overflow: auto;
+    overflow: visible;      /* ✅ Allow it to grow */
+  margin-bottom: 2rem; 
   }
+  /* ===== Main ===== */
+  main {
+    
+  padding: 2rem;
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 2rem;
+  overflow: visible;    /* ✅ Let it expand freely */
+}
+
 
   /* ===== Header ===== */
   header {
@@ -86,13 +98,7 @@
     color: #326070;
   }
 
-  /* ===== Main ===== */
-  main {
-    padding: 2rem;
-    overflow-y: auto;
-    display: grid;
-    grid-auto-rows: auto;
-  }
+  
 
   /* ===== Journal Form ===== */
   .journal-form {
