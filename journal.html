@@ -38,6 +38,7 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: var(--font-sans); }
 
+
    /* ===== Container ===== */
 .container {
   width: 90vw;
@@ -57,19 +58,31 @@
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
+        border-top-left-radius: 16px;
+                border-top-right-radius: 16px;
+
+
       align-items: center;
+        border-bottom: 2px solid #326070;
+        border-top: 2px solid #326070;
+        border-right: 2px solid #326070;
+        border-left: 2px solid #326070;
+
+                   
+
+
     }
     header h1 {
       font-size: 2rem;
       font-weight: 600;
-      color: #fff;
+      color: #326070;
     }
     header nav a {
       
       border-radius: 1px;
       font-weight: 500;
       transition: background var(--transition), color var(--transition);
-      color: white;
+      color: #326070;
     }
    
     /* ===== Main ===== */
@@ -81,6 +94,7 @@ main {
   grid-auto-rows: auto;
   /* gap: 2rem; Removed */
 }
+
 
 /* ===== Journal Form ===== */
 .journal-form {
@@ -94,6 +108,8 @@ main {
   height: 300px; /* Or any height you prefer */
   justify-content: space-between;
   margin-bottom: 0.5rem; /* Small margin to reduce space between sections */
+
+
 }
 
     .journal-form label {
@@ -130,7 +146,7 @@ main {
       align-self: flex-end;
       padding: 0.75rem 1.5rem;
       background: var(--primary-dark);
-      color: #fff;
+      color: #326070;
       border: none;
       border-radius: 8px;
       font-size: 1rem;
@@ -165,7 +181,7 @@ main {
     .entries colgroup col:nth-child(3) { width: 10%; }
     .entries thead th {
       background: var(--primary-dark);
-      color: #fff;
+      color: #326070;
       padding: 0.75rem 1.5rem;
       font-weight: 500;
       position: sticky;
@@ -191,11 +207,14 @@ main {
     .entries tbody tr {
       background: var(--surface);
       transition: transform var(--transition), box-shadow var(--transition);
+
     }
     .entries tbody tr:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 32px var(--surface-shadow);
     }
+
+
     .delete-btn {
       background: none;
       border: none;
@@ -208,10 +227,13 @@ main {
       color: var(--primary-dark);
     }
 
+
+
   @media (max-width: 800px) {
   .container {
     width: 95vw;
     padding: 0;
+
   }
 }
 
@@ -219,7 +241,7 @@ main {
 </head>
 <body>
   <div class="container">
-    <header>
+    <header class="header2">
       <h1>Daily Journal</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <nav><a href="index.html">Home</a></nav>
             <nav><a href="mood.html">Mood Tracker</a></nav>
