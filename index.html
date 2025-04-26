@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calm Bot</title>
+  <title>Calm Bot - Home</title>
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
@@ -21,14 +21,14 @@
 
   /* ===== Base Styles ===== */
   html, body {
-    overflow-x: auto;  /* prevent sideways scroll everywhere */
+    overflow-x: hidden;  /* prevent sideways scroll everywhere */
     margin: 0;
     padding: 0;
   }
   body { font-family: 'Quicksand', sans-serif; background-color: #f7faff; color: #2e2e2e; }
-  header { background-color: #e2f0eb; padding: 2rem; text-align: center; border-bottom: 3px solid #b6dccf; position: relative; }
+  header { background-color: #e2f0eb; padding: 2rem; text-align: center; border-bottom: 3px solid #b6dccf; position: relative; max-width: 100%;}
   header h1 { font-size: 2.8rem; color: #2f5d50; }
-  nav { background-color: #d4efe4; padding: 1rem; display: flex; justify-content: center; gap: 2rem; border-bottom: 2px solid #a8d4c4; position: relative; z-index: 0; }
+  nav { background-color: #d4efe4; padding: 1rem; display: flex; justify-content: center; gap: 2rem; border-bottom: 2px solid #a8d4c4; position: relative; z-index: 0;max-width: 100% }
   nav a { text-decoration: none; color: #2f5d50; font-weight: bold; font-size: 1.1rem; }
 
   /* ===== Main Layout ===== */
@@ -73,14 +73,14 @@
   }
 
   /* ===== Footer ===== */
-  footer { text-align: center; padding: 1rem; background-color: #e2f0eb; border-top: 2px solid #b6dccf; margin-top: 4rem; color: #2f5d50; position: relative; }
+  footer { text-align: center; padding: 1rem; background-color: #e2f0eb; border-top: 2px solid #b6dccf; margin-top: 4rem; color: #2f5d50; position: relative; max-width: 100%}
 
   /* ===== Doodles ===== */
   .doodle { position: absolute; width: 160px; pointer-events: none; z-index: 10; }
   .doodle-top-left, .doodle-top-right { z-index: 10; }
   .doodle-top-left  { max-width: 75px; top: 285px; left: 400px; transform: scale(1.5) scaleX(-1); }
   .doodle-top-right { top: 145px; right: 40px; transform: scale(2) rotate(270deg) scaleX(-1); }
-  .doodle-bottom-left { max-width: 150px; bottom: 7px; left: 950px; transform: scale(1.5) scaleX(-1); }
+  .doodle-bottom-left { max-width: 150px; bottom: 120px; left: 950px; transform: scale(1.5) scaleX(-1); }
   .doodle-bottom-right { bottom: -20px; right: -20px; }
 
   .chatbot {
@@ -221,7 +221,9 @@
       </div>
     </section>
 
-    <section id="quote-section" class="quote-section">
+      <iframe class="chatbot" src="https://www.yeschat.ai/i/gpts-2OTo9yv3Hp-TherapistGPT" width="800" height="500" style="max-width: 100%;"></iframe>   <br>
+
+ <section id="quote-section" class="quote-section">
       <!-- Soft doodle accent -->
       <img src="img/doodle-plant2.png" alt="" class="doodle doodle-bottom-right">
       <!-- additional doodle -->
@@ -229,9 +231,7 @@
       <div id="quote-display">
         <p id="quote-text">Sometimes the people around you won't understand your journey. They don't need to, it's not for them.</p>
       </div>
-    </section><br>
-      <iframe class="chatbot" src="https://www.yeschat.ai/i/gpts-2OTo9yv3Hp-TherapistGPT" width="800" height="500" style="max-width: 100%;"></iframe>
-
+    </section>
   </main>
 <!-- Elfsight AI Chatbot | Calm Bot -->
   <footer>
