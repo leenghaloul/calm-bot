@@ -17,6 +17,7 @@
   .eye { width: 65px; height: 65px; background-color: #00f5ff; border-radius: 50%; box-shadow: 0 0 15px #00f5ff; }
   .mouth { margin-top: 10px; filter: drop-shadow(0 0 12px #00f5ff); }
   .splash-text { margin-top: 20px; font-size: 1.7rem; color: #00f5ff; text-shadow: 0 0 7px #00f5ff; font-family: "Quicksand", "Segoe UI", sans-serif; font-weight: 600; }
+
   body.loaded #splash-screen { opacity: 0; pointer-events: none; }
 
   /* ===== Base Styles ===== */
@@ -79,7 +80,21 @@
   }
 
   /* ===== Footer ===== */
-  footer { display: flex; flex-wrap: wrap;text-align: center; padding: 1rem; background-color: #e2f0eb; border-top: 2px solid #b6dccf; margin-top: 4rem; color: #2f5d50; position: relative; max-width: 100%}
+  footer {
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  align-items: center;      /* centers vertically */
+  flex-direction: column;   /* stack items vertically */
+  text-align: center;
+  padding: 1rem;
+  background-color: #e2f0eb;
+  border-top: 2px solid #b6dccf;
+  margin-top: 4rem;
+  color: #2f5d50;
+  position: relative;
+  max-width: 100%;
+}
+
 
   /* ===== Doodles ===== */
   .doodle { position: absolute; width: 160px; pointer-events: none; z-index: 10; }
@@ -182,6 +197,7 @@ display: none;
       max-width: 100px;
     }
   }
+  
 </style>
 
 
