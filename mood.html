@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mood Tracker</title>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Tracker</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -13,29 +13,35 @@
       padding: 0;
     }
 
-    header {
-  background-color: #a3d2ca;
-  color: #fff;
+   header {
+  background-color: #ffb3c6;
+  color: #b84d68;
   padding: 20px;
   text-align: center;
+   font-family: 'quicksand' /* <<< THIS LINE is critical */
 }
 
-nav {
-  background-color: #e4bad4;
-  padding: 15px 0;
-  text-align: center;
-}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      padding: 5px 15px;
-      font-weight: bold;
-      border-radius: 5px;
+    nav {
+      background-color: #f8c9d1;  /* Lighter shade of pink */
+      padding: 15px 0;
+      text-align: center;
+      border-top: 2px solid #e09bb7; /* Darker pink */
+      border-bottom: 2px solid #e09bb7; /* Darker pink */
     }
 
+   nav a {
+  color: #b84d68;
+  text-decoration: none;
+  padding: 5px 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  font-family: 'quicksand' /* <<< THIS LINE is critical */
+}
+
+
     nav a:hover {
-      background-color: #c98bb9;
+      background-color: #f7dce1;
     }
 
     main {
@@ -58,8 +64,9 @@ nav {
       border: 1px solid #ccc;
       font-size: 16px;
     }
+
     textarea {
-     width: 96%;
+      width: 96%;
       padding: 10px;
       margin-top: 10px;
       border-radius: 10px;
@@ -96,7 +103,7 @@ nav {
     .history {
       flex: 1;
       max-width: 400px;
-      background: #f3f3f3;
+      background: #ffe3e8;  /* Soft pink matching the palette */
       padding: 20px;
       border-radius: 15px;
       height: 100%;
@@ -109,7 +116,7 @@ nav {
 
     .mood-group h3 {
       margin: 0;
-      background-color: #d7f0f0;
+      background-color:white;
       padding: 10px;
       cursor: pointer;
       border-radius: 10px;
@@ -123,7 +130,7 @@ nav {
     }
 
     .note {
-      background-color: #fff;
+      background-color: #ffe8f2; /* Soft pink for notes */
       margin-bottom: 8px;
       padding: 8px;
       border-radius: 8px;
@@ -132,11 +139,12 @@ nav {
     }
 
     footer {
-      background-color: #a3d2ca;
+      background-color: #ffb3c6;  /* Header matches footer color */
       color: white;
       text-align: center;
       padding: 10px;
       margin-top: 30px;
+      border-top: 2px solid #e09bb7; /* Darker pink */
     }
   </style>
 </head>
@@ -146,6 +154,11 @@ nav {
   </header>
   <nav>
     <a href="index.html">Home</a>
+    <a href="journal.html">Journal</a>
+    <a href="assessment.html">Assessments</a>
+    <a href="goals.html">Goal Tracker</a>
+    <a href="resources.html">Resources</a>
+    <a href="situations.html">Coping Tools</a>
   </nav>
 
   <main>
@@ -160,13 +173,22 @@ nav {
         <option value="excited">🤩 Excited</option>
         <option value="lonely">😞 Lonely</option>
         <option value="confident">💪 Confident</option>
+        <option value="calm">😌 Calm</option>
+        <option value="grateful">🙏 Grateful</option>
+        <option value="hopeful">🌟 Hopeful</option>
+        <option value="stressed">😖 Stressed</option>
+        <option value="bored">😑 Bored</option>
+        <option value="optimistic">😊 Optimistic</option>
+        <option value="relieved">😅 Relieved</option>
       </select>
       <button onclick="saveMood()">Save Mood</button>
 
-      <h3 id="moodDisplay"></h3>
-      <p id="moodParagraph"></p>
+      <h3 id="moodDisplay">You're feeling  Anxious.</h3>
+      <p id="moodParagraph" style="display: block;">Anxiety often shows up when your mind is racing about the future or uncertain outcomes. It can feel overwhelming, but it won’t last forever.
 
-      <div id="extraInput">
+Tip: Take a moment to breathe slowly. Try the 4-7-8 method: inhale for 4 seconds, hold for 7, exhale for 8. 🌬️</p>
+
+      <div id="extraInput" style="display: block;">
         <label for="moodNotes">Would you like to write more about it?</label>
         <textarea id="moodNotes" placeholder="Write here..."></textarea>
         <button onclick="saveMore()">Save Note</button>
@@ -180,7 +202,7 @@ nav {
   </main>
 
   <footer>
-    <p>&copy; 2025 Calm Bot</p>
+    <p>© 2025 Calm Bot</p>
   </footer>
 
 <script>
@@ -191,7 +213,14 @@ nav {
     angry: "Anger is a powerful emotion that usually signals unmet needs or boundaries. It's okay to feel it — what matters is how you respond.\n\nTip: Step away for a moment and take some deep breaths. Try writing out what's triggering your anger before acting on it. 🔥",
     excited: "You're feeling excited — that's a beautiful energy! It often comes with anticipation and big emotions.\n\nTip: Channel your excitement into something creative or forward-moving, like making a plan or sharing your joy with someone. 🎉",
     lonely: "Feeling lonely can happen even when you're not physically alone. You're not the only one who feels this way, and it doesn't mean something is wrong with you.\n\nTip: Reach out to someone — even a short message or walk outside can help shift that feeling. 💛",
-    confident: "Confidence means you're trusting yourself — and that’s something to celebrate! It can come from small wins or simply believing in your worth.\n\nTip: Take note of what’s making you feel confident today, and revisit it when you need a reminder of your strength. 💪"
+    confident: "Confidence means you're trusting yourself — and that’s something to celebrate! It can come from small wins or simply believing in your worth.\n\nTip: Take note of what’s making you feel confident today, and revisit it when you need a reminder of your strength. 💪",
+    calm: "You're feeling calm — that peaceful state of mind is a great place to be. Enjoy the stillness and find peace in the present moment.\n\nTip: Take a few deep breaths and appreciate how centered you feel. 🧘&zwj;♀️",
+    grateful: "Gratitude is a powerful feeling that can shift your perspective. It's wonderful to take a moment to appreciate the good things around you.\n\nTip: Write down 3 things you're grateful for today. 🙏",
+    hopeful: "You're feeling hopeful — the future is full of possibilities! Stay positive, and trust that better things are ahead.\n\nTip: Focus on what you can control and let optimism guide your steps. 🌟",
+    stressed: "Stress can feel overwhelming, but it's a natural response to life’s demands. Acknowledge the pressure, then take steps to manage it.\n\nTip: Take a break, step away, and focus on your breathing for a moment of relief. 😖",
+    bored: "Feeling bored can feel frustrating, but it also opens the door for new possibilities. It’s okay to let your mind wander.\n\nTip: Try something new or explore an interest you’ve neglected for a while. 😑",
+    optimistic: "You're feeling optimistic — that's a wonderful outlook on life! Embrace the positive energy and look forward to what’s ahead.\n\nTip: Keep a positive affirmation close by to stay grounded in this mindset. 😊",
+    relieved: "You’re feeling relieved, and that sense of freedom from worry is a great place to be. Let go of the tension and enjoy the peace.\n\nTip: Celebrate this feeling by taking time for yourself, enjoying the calm. 😅"
   };
 
   const moodLabels = {
@@ -201,7 +230,14 @@ nav {
     angry: " Angry ▾",
     excited: " Excited ▾",
     lonely: " Lonely ▾",
-    confident: " Confident ▾"
+    confident: " Confident ▾",
+    calm: " Calm ▾",
+    grateful: " Grateful ▾",
+    hopeful: " Hopeful ▾",
+    stressed: " Stressed ▾",
+    bored: " Bored ▾",
+    optimistic: " Optimistic ▾",
+    relieved: " Relieved ▾"
   };
 
   const moodDescription = {
@@ -211,7 +247,14 @@ nav {
     angry: " Angry.",
     excited: " Excited.",
     lonely: " Lonely.",
-    confident: " Confident."
+    confident: " Confident.",
+    calm: " Calm.",
+    grateful: " Grateful.",
+    hopeful: " Hopeful.",
+    stressed: " Stressed.",
+    bored: " Bored.",
+    optimistic: " Optimistic.",
+    relieved: " Relieved."
   };
 
   function saveMood() {
@@ -313,5 +356,6 @@ nav {
   window.onload = renderHistory;
 </script>
 
-</body>
-</html>
+
+
+</body></html>
