@@ -3,143 +3,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Goal Tracker</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-    }
+  <title>Goal Tracker</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    color: #507963;
+  }
 
-    header, footer {
-      background-color: #9fd3c7;
-      text-align: center;
-      padding: 20px;
-      color: white;
-    }
-    nav {
-      background-color: #dbe9e8;
-      padding: 1em;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 0;
-      margin: 0;
-    }
-    nav li {
-      margin: 0 1em;
-    }
-    nav a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
+  header, footer {
+    background-color: #9fd3c7;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Quicksand', sans-serif;
+    border-top: 2px solid #a8d8c7;
+    border-bottom: 2px solid #a8d8c7;
+  }
 
-    h1 {
-      margin: 1rem 0;
-    }
+  nav {
+    background-color: #dbe9e8;
+    padding: 1em;
+    border-top: 2px solid #a8d8c7;
+    border-bottom: 2px solid #a8d8c7;
+  }
 
-    .goal-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+  }
 
-    .goal-card {
-      width: 120px;
-      height: 120px;
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      padding: 1rem;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+  nav a {
+    text-decoration: none;
+    color: #507963;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    transition: color 0.3s;
+  }
 
-    .goal-icon {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 0.25rem;
-    }
+  nav a:hover {
+    color: #78b7a1;
+  }
 
-    .goal-text {
-      font-size: 0.85rem;
-    }
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
 
-    .dropdown {
-      margin: 1rem auto;
-      display: none;
-      text-align: center;
-    }
+  h1, h3 {
+    margin: 1rem 0;
+    font-family: 'Quicksand', sans-serif;
+  }
 
-    .dropdown select {
-      padding: 0.5rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
+  .goal-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+  }
 
-    .tracker {
-      display: none;
-      margin: 2rem auto;
-      width: 90%;
-      max-width: 600px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 1rem;
-    }
+  .goal-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+  .goal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
 
-    table th, table td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
+  .goal-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-    table th:nth-child(2),
-    table td:nth-child(2) {
-      width: 80px;
-    }
+  .goal-text {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #507963;
+  }
 
-    table input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-    }
+  .dropdown {
+    margin: 2rem 0;
+    text-align: center;
+    display: none;
+  }
 
-    table th {
-      background-color: #e0f7fa;
-    }
+  .dropdown select {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Segoe UI', sans-serif;
+    width: 250px;
+  }
 
-    .delete-btn {
-      margin-top: 1rem;
-      background-color: #ff6b81;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+  .tracker {
+    display: none;
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+  }
 
-    .delete-btn:hover {
-      background-color: #e0556e;
-    }
-  </style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  thead {
+    background-color: #dbe9e8;
+  }
+
+  table th, table td {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  table th {
+    background-color: #e0f7fa;
+    font-weight: bold;
+  }
+
+  table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  table input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #78b7a1;
+  }
+
+  .delete-btn {
+    margin-top: 1rem;
+    background-color: #ff6b81;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .delete-btn:hover {
+    background-color: #e0556e;
+  }
+</style>
+
 </head>
 <body>
 
@@ -147,8 +185,13 @@
   <h1>Goal Tracker</h1>
 </header>
 <nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
+  <ul>    <a href="index.html">Home</a>
+
+  <a href="journal.html">Journal</a>
+    <a href="mood.html">Mood Tracker</a>
+    <a href="assessment.html">Assessments</a>
+    <a href="resources.html">Resources</a>
+    <a href="situations.html">Coping Tools</a>
   </ul>
 </nav><br><br>
 
@@ -215,15 +258,19 @@
   });
 
   function showDropdown(category) {
-    select.innerHTML = '<option value="">-- Select --</option>';
-    categories[category].forEach(item => {
-      const opt = document.createElement('option');
-      opt.value = item;
-      opt.textContent = item;
-      select.appendChild(opt);
-    });
-    dropdown.style.display = 'block';
-  }
+  select.innerHTML = '<option value="">-- Select --</option>';
+  categories[category].forEach(item => {
+    const opt = document.createElement('option');
+    opt.value = item;
+    opt.textContent = item;
+    select.appendChild(opt);
+  });
+  dropdown.style.display = 'block';
+
+  // Smooth scroll to the dropdown
+  dropdown.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 
   select.addEventListener('change', () => {
     const selectedGoal = select.value;
@@ -239,7 +286,7 @@
     trackerWrapper.id = "tracker-" + goalName;
 
     const title = document.createElement('h3');
-    title.textContent = `📅 Tracking: ${goalName}`;
+    title.textContent = `${goalName} Tracker`;
 
     const table = document.createElement('table');
     table.innerHTML = `
