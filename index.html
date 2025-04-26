@@ -36,8 +36,8 @@
   nav a { text-decoration: none; color: #2f5d50; font-weight: bold; font-size: 1.1rem; }
 
   /* ===== Main Layout ===== */
-  .main-content { padding: 2rem; display: flex; flex-direction: column; align-items: center; position: relative; }
-  .greeting-section {
+  .main-content {  flex-wrap: wrap;padding: 2rem; display: flex; flex-direction: column; align-items: center; position: relative; }
+  .greeting-section { flex-wrap: wrap;
     /* background-color invalid, leaving unchanged */
     border: 2px solid #b6dccf;
     border-radius: 1.5rem;
@@ -70,14 +70,16 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     font-style: italic;
     color: #4e6d5e;
-    max-width: 8000px; /* overridden on mobile */
+    max-width: 100%; /* overridden on mobile */
     margin: 0 auto;
     position: relative;
     overflow: visible;
+    display: flex;
+     flex-wrap: wrap;
   }
 
   /* ===== Footer ===== */
-  footer { flex-wrap: wrap;text-align: center; padding: 1rem; background-color: #e2f0eb; border-top: 2px solid #b6dccf; margin-top: 4rem; color: #2f5d50; position: relative; max-width: 100%}
+  footer { display: flex; flex-wrap: wrap;text-align: center; padding: 1rem; background-color: #e2f0eb; border-top: 2px solid #b6dccf; margin-top: 4rem; color: #2f5d50; position: relative; max-width: 100%}
 
   /* ===== Doodles ===== */
   .doodle { position: absolute; width: 160px; pointer-events: none; z-index: 10; }
@@ -86,7 +88,11 @@
   .doodle-top-right { top: 145px; right: 40px; transform: scale(2) rotate(270deg) scaleX(-1); }
   .doodle-bottom-left { max-width: 150px; bottom: 120px; left: 950px; transform: scale(1.5) scaleX(-1); }
   .doodle-bottom-right { bottom: -20px; right: -20px; }
-
+.quote-text,
+.quote-author {
+  flex: 1 1 100%;
+  text-align: center;
+}
   .chatbot {
     border-radius: 15px;
     background-color: #fff;
@@ -94,6 +100,7 @@
     padding: 10px;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     height: 400px;
     overflow-y: auto;
@@ -101,7 +108,7 @@
   }
 
   /* ===== RESPONSIVE FIXES FOR MOBILE ONLY ===== */
-  @media (max-width:100%) {
+  @media (max-width:768px) {
   /* ensure no global horizontal scroll */
   html, body {
 
@@ -138,6 +145,7 @@
     width: 100%;
     padding: 1rem;
   }
+
   .category-cards {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -166,7 +174,7 @@
       bottom: 40px !important;
       left: 20px !important;
       max-width: 90px;
-
+display: none;
     }
     .doodle-bottom-right {
       bottom: 20px !important;
