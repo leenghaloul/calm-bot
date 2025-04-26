@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
 <style>
+    * {
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
   .icons { width: 55%; height: 82%; }
 
   /* ===== Splash Screen Styles (unchanged) ===== */
@@ -24,11 +33,14 @@
     overflow-x: hidden;  /* prevent sideways scroll everywhere */
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    max-height: 100%;
   }
   body { font-family: 'Quicksand', sans-serif; background-color: #f7faff; color: #2e2e2e; }
   header { background-color: #e2f0eb; padding: 2rem; text-align: center; border-bottom: 3px solid #b6dccf; position: relative; max-width: 100%;}
   header h1 { font-size: 2.8rem; color: #2f5d50; }
-  nav { background-color: #d4efe4; padding: 1rem; display: flex; justify-content: center; gap: 2rem; border-bottom: 2px solid #a8d4c4; position: relative; z-index: 0;max-width: 100%; max-height: 100%}
+  nav { background-color: #d4efe4; padding: 1rem; display: flex; justify-content: center; gap: 2rem; border-bottom: 2px solid #a8d4c4; position: relative; z-index: 0;max-width: 100%; max-height: 100%;  flex-wrap: wrap;
+}
   nav a { text-decoration: none; color: #2f5d50; font-weight: bold; font-size: 1.1rem; }
 
   /* ===== Main Layout ===== */
@@ -97,9 +109,10 @@
   }
 
   /* ===== RESPONSIVE FIXES FOR MOBILE ONLY ===== */
-  @media (max-width: 768px) {
+  @media (max-width:100%) {
   /* ensure no global horizontal scroll */
   html, body {
+
   }
 
   /* tighten header */
@@ -114,6 +127,8 @@
     padding: 0.5rem;
     gap: 0.5rem;
     max-width: 100%;
+    max-height: 100%;
+    flex-wrap: wrap;
   }
   nav a {
     flex: 1 1 0;           /* allow links to shrink/grow */
@@ -157,9 +172,10 @@
       max-width: 60px;
     }
     .doodle-bottom-left {
-      bottom: 20px !important;
+      bottom: 40px !important;
       left: 20px !important;
       max-width: 90px;
+
     }
     .doodle-bottom-right {
       bottom: 20px !important;
