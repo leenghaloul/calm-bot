@@ -22,13 +22,26 @@
 
   /* ===== Base Styles ===== */
   html, body {
-    overflow-x: hidden;  /* prevent sideways scroll everywhere */
+    overflow-x: hidden; 
+    overflow: hidden; /* prevent sideways scroll everywhere */
+    overflow-y: visible;
     margin: 0;
     padding: 0;
     max-width: 100%;
     max-height: 100%;
     flex-wrap: wrap;
   }
+  .quote-of-the-day {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.quote-of-the-day h3 {
+  font-size: 1.5rem;
+  color: #2f5d50;
+  margin-bottom: 0.5rem;
+}
+
   body { font-family: 'Quicksand', sans-serif; background-color: #f7faff; color: #2e2e2e; }
   header { flex-wrap: wrap; background-color: #e2f0eb; padding: 2rem; text-align: center; border-bottom: 3px solid #b6dccf; position: relative; max-width: 100%;}
   header h1 { font-size: 2.8rem; color: #2f5d50; }
@@ -71,7 +84,8 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     font-style: italic;
     color: #4e6d5e;
-    max-width: 100%; /* overridden on mobile */
+    max-width: 100%;
+    width: 100%; /* overridden on mobile */
     margin: 0 auto;
     position: relative;
     overflow: visible;
@@ -99,28 +113,49 @@
   /* ===== Doodles ===== */
   .doodle { position: absolute; width: 160px; pointer-events: none; z-index: 10; }
   .doodle-top-left, .doodle-top-right { z-index: 10; }
-  .doodle-top-left  { max-width: 75px; top: 285px; left: 400px; transform: scale(1.5) scaleX(-1); }
-  .doodle-top-right { top: 145px; right: 40px; transform: scale(2) rotate(270deg) scaleX(-1); }
+  .doodle-top-left  { max-width: 75px; top: 285px; right: 400px; transform: scale(1.5) scaleX(-1); }
+  .doodle-top-right { bottom:  -5px; right: 40px; transform: scale(2) rotate(270deg) scaleX(-1); }
   .doodle-bottom-left { max-width: 150px; bottom: 120px; left: 950px; transform: scale(1.5) scaleX(-1); }
-  .doodle-bottom-right { bottom: -20px; right: -20px; }
+  .doodle-bottom-right { bottom: -100px; left: -150px;transform: scale(1.5) scaleX(-1) rotate(15deg); }
+  .image4 { position: absolute; width: 160px; pointer-events: none; z-index: 10; right: 40px; transform: rotate(15deg)scale(1.02); }
+  .image5 { position: absolute; width: 160px; pointer-events: none; z-index: 10; left: 180px; top: 200px; transform: scale(1.02)rotate(10deg); }
+    .image6 { position: absolute; width: 160px; pointer-events: none; z-index: 10; left: -70px; top: 300px; transform: scale(2.7); }
+        .image7 { position: absolute; width: 160px; pointer-events: none; z-index: -1; overflow-x: hidden; overflow: hidden; right: 10px; bottom: -500px; transform: scale(2.9)scaleX(-1)rotate(45deg); }
+
+
+
 .quote-text,
 .quote-author {
   flex: 1 1 100%;
   text-align: center;
 }
   .chatbot {
-    border-radius: 15px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 400px;
-    overflow-y: auto;
-    max-width: 100%; /* ensure it never exceeds viewport */
-  }
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+  .chatbot-frame {
+  background-color: #d8f3e5; /* pastel green */
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.chatbot-title {
+  font-family: 'Quicksand', sans-serif;
+  color: #2f5d50;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+
 
   /* ===== RESPONSIVE FIXES FOR MOBILE ONLY ===== */
   @media (max-width:768px) {
@@ -128,6 +163,7 @@
   html, body {
 
   }
+  .image4, .image5, .image6 { display: none; }
 
   /* tighten header */
   header {
@@ -195,9 +231,10 @@ display: none;
       bottom: 20px !important;
       right: 20px !important;
       max-width: 100px;
+      display: none;
     }
   }
-  
+
 </style>
 
 
@@ -220,7 +257,7 @@ display: none;
   <header>
     <h1>Calm Bot</h1>
     <!-- doodle placeholder -->
-    <img src="https://static.vecteezy.com/system/resources/previews/023/577/924/non_2x/gouache-pastel-flower-free-png.png" alt="" class="doodle doodle-top-left">
+    <img src="https://images.vexels.com/media/users/3/290072/isolated/preview/2448df25a80310c45742e3e743962d14-flower-flat-irregular-pastel.png?w=360" alt="" class="doodle doodle-top-left">
     <img src="" alt="" class="doodle doodle-top-right">
   </header>
 
@@ -231,11 +268,15 @@ display: none;
     <a href="goals.html">Goal Tracker</a>
     <a href="resources.html">Resources</a>
     <a href="situations.html">Coping Tools</a>
-  </nav>
-        <img src="https://images.vexels.com/media/users/3/328170/isolated/preview/bc3b4c197179813c380336758a9158d8-simple-green-tree-branch-with-leaves.png" alt="" class="doodle doodle-top-right">
+    <img src="https://images.vexels.com/media/users/3/328170/isolated/preview/bc3b4c197179813c380336758a9158d8-simple-green-tree-branch-with-leaves.png" alt="" class="doodle doodle-top-right">
 
+  </nav>
+  <img src="https://static.showit.co/800/CTPp4QaHNPwUTt36biBUCg/281898/orange-blob.png" class="image6">
+        <img src="https://static.vecteezy.com/system/resources/previews/023/253/447/non_2x/line-shape-in-pastel-color-free-png.png" class="image5">
+        <img src="https://hjcnewmedia.com/small-is-beautiful/assets/blob-header-full.png" class="image7">
   <!-- doodle placeholder -->
-  <img src="https://static.vecteezy.com/system/resources/previews/024/132/945/non_2x/simple-pastel-line-decoration-free-png.png" alt="" class="doodle doodle-bottom-left">
+  <img src="https://static.vecteezy.com/system/resources/previews/024/132/945/non_2x/simple-pastel-line-decoration-free-png.png" alt="" class="doodle doodle-bottom-left">    
+
 
   <main class="main-content">
     <section class="greeting-section">
@@ -252,17 +293,30 @@ display: none;
       </div>
     </section>
 
-      <iframe class="chatbot" src="https://www.yeschat.ai/i/gpts-2OTo9yv3Hp-TherapistGPT" width="800" height="500" style="max-width: 100%;"></iframe>   <br>
+<div class="chatbot-frame">
+  <h2 class="chatbot-title">Talk to a Chatbot</h2>
+  <iframe class="chatbot" src="https://www.yeschat.ai/i/gpts-2OTo9yv3Hp-TherapistGPT" width="850" height="520" style="max-width: 100%;"></iframe>
+</div>
+<br>
+
+<br>
 
  <section id="quote-section" class="quote-section">
-      <!-- Soft doodle accent -->
-      <img src="img/doodle-plant2.png" alt="" class="doodle doodle-bottom-right">
-      <!-- additional doodle -->
-      <img src="" alt="" class="doodle doodle-top-left">
-      <div id="quote-display">
-        <p id="quote-text">Sometimes the people around you won't understand your journey. They don't need to, it's not for them.</p>
-      </div>
-    </section>
+  <!-- Soft doodle accent -->
+  <img src="https://epicreality.app/wp-content/uploads/2020/02/left.png" alt="" class="doodle doodle-bottom-right">
+  <!-- additional doodle -->
+  <img src="" alt="" class="doodle doodle-top-left">
+  <div class="quote-of-the-day">
+    <h3>Quote of the Day</h3>
+    <div id="quote-display">
+      <p id="quote-text">Sometimes the people around you won't understand your journey. They don't need to, it's not for them.</p>
+    </div>
+  </div>
+</section>
+<img src="https://images.vexels.com/media/users/3/290921/isolated/preview/46cf92d86d2fe51b0fd8773db530d809-simple-flat-flowers-pastel-red.png?w=360" class="image4">
+<img src="https://images.vexels.com/media/users/3/290921/isolated/preview/46cf92d86d2fe51b0fd8773db530d809-simple-flat-flowers-pastel-red.png?w=360" class="image4">
+
+
   </main>
 <!-- Elfsight AI Chatbot | Calm Bot -->
   <footer>
@@ -300,8 +354,8 @@ display: none;
     const quotes = [
       "You don't have to control your thoughts. You just have to stop letting them control you.",
       "Sometimes the people around you won't understand your journey. They don't need to, it's not for them.",
-      "Healing takes time, and asking for help is a courageous step.",
-      "Self-care is how you take your power back."
+      
+      "Self-care is how you take your power back. Healing takes time, and asking for help is a courageous step."
     ];
     const quoteText = document.getElementById('quote-text');
     quoteText.textContent = quotes[Math.floor(Math.random() * quotes.length)];
