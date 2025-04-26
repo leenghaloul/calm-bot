@@ -1,280 +1,291 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calm Bot - Tough Situation</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: "Quicksand", sans-serif;
-      background-color: #f7f7f7; /* Soft off-white background */
-      margin: 0;
-      padding: 0;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-    }
-
-    /* Header Styles */
-    header {
-      background-color: #5c9a8f; /* Calming green-blue color */
-      color: white;
-      padding: 20px;
-      text-align: center;
-      width: 100%;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    /* Navigation Styles */
-    nav {
-      background-color: #87b8a1; /* Lighter green-blue */
-      padding: 10px;
-      width: 100%;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-
-    /* Section Styles */
-    h1 {
-      text-align: center;
-      color: #4a4a4a;
-      margin-top: 20px;
-      font-size: 2rem;
-    }
-
-    p {
-      text-align: center;
-      font-size: 1rem;
-      color: #666;
-      margin-bottom: 30px;
-    }
-
-    .question-section {
-      width: 90%;
-      max-width: 600px;
-      background-color: #ffffff;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-    }
-
-    .question {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      color: #444;
-    }
-
-    textarea {
-      width: 100%;
-      padding: 12px 20px; /* Equal padding left and right */
-      font-size: 1rem;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-      resize: none; /* Prevent resizing */
-      min-height: 100px;
-      display: block;
-      margin: 0 auto;
-      box-sizing: border-box; /* Ensures padding doesn't cause overflow */
-    }
-
-    textarea:focus {
-      outline: none;
-      border-color: #00f5ff;
-      box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
-    }
-
-    .next-button {
-      padding: 12px 25px;
-      background-color: #00f5ff;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 15px;
-      font-size: 1rem;
-    }
-
-    .next-button:hover {
-      background-color: #00aaff;
-    }
-
-    .answer-section {
-      width: 90%;
-      max-width: 600px;
-      background-color: #f1f1f1;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-    }
-
-    .answer {
-      margin-bottom: 15px;
-      background-color: #e6f7ff;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    .answer p {
-      margin: 5px 0;
-    }
-
-    .answer .date {
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    .delete-btn, .restart-button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-top: 15px;
-    }
-
-    .delete-btn {
-      background-color: #ff4d4d;
-      color: white;
-    }
-
-    .delete-btn:hover {
-      background-color: #e60000;
-    }
-
-    .restart-button {
-      background-color: #ffcc00;
-      color: white;
-    }
-
-    .restart-button:hover {
-      background-color: #e6b800;
-    }
-
-  </style>
-</head>
-<body>
-
-  <header>
-    Tough Situation
-  </header>
-
-  <nav>
-    <a href="index.html">Home</a>
-  </nav>
-
-  <h1>You're Going Through A Tough Time</h1>
-  <p>This activity will help you slow down, think through the situation, and find a way forward.</p>
-
-  <div id="question-section" class="question-section">
-    <p id="question" class="question">What situation is troubling you?</p>
-    <textarea id="answer" placeholder="Describe the situation"></textarea>
-    <div class="next-section">
-      <button class="next-button" onclick="saveAnswer()">Next</button>
-    </div>
-  </div>
-
-  <div id="answer-section" class="answer-section" style="display: none;">
-    <h3>Your Responses:</h3>
-    <div id="responses"></div> <!-- Answers will be shown here -->
-    <button class="delete-btn" onclick="deleteAllAnswers()">Delete All Answers</button>
-    <button class="restart-button" onclick="restartQuestions()">Restart</button>
-  </div>
-
-  <script>
-    let answers = [];
-    let currentQuestionIndex = 0;
-    const questions = [
-      { question: "What situation is troubling you?" },
-      { question: "What do you have the power and ability to change?" },
-      { question: "Who can you ask for help and what do you want them to do?" },
-      { question: "What are you not able to change?" },
-      { question: "What do you need to do to let go of what you can't change?" }
-    ];
-
-    // Function to save the answer and show the next question
-    function saveAnswer() {
-      const answerText = document.getElementById("answer").value.trim();
-      if (answerText) {
-        const date = new Date();
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        const formattedTime = `${hours % 12 || 12}:${minutes < 10 ? '0' + minutes : minutes} ${hours >= 12 ? 'PM' : 'AM'}`;
-
-        answers.push({ question: questions[currentQuestionIndex].question, answer: answerText, date: formattedTime });
-        document.getElementById("answer").value = ''; // Clear textarea
-
-        // Show the answers after the first one
-        if (currentQuestionIndex === 0) {
-          document.getElementById("answer-section").style.display = "block";
-        }
-
-        displayAnswer({ question: questions[currentQuestionIndex].question, answer: answerText, date: formattedTime });
-
-        // Increment the question index
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-          loadQuestion();
-        } else {
-          document.getElementById("question-section").style.display = "none"; // Hide question section
-        }
-      } else {
-        alert("Please provide an answer before proceeding.");
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tough Situation</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        font-family: "Quicksand", sans-serif;
+        background-color: #f7f7f7; /* Soft off-white background */
+        margin: 0;
+        padding: 0;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
       }
-    }
 
-    // Load the next question
-    function loadQuestion() {
-      document.getElementById("question").textContent = questions[currentQuestionIndex].question;
-    }
+      /* Header Styles */
+      header {
+        background-color: #5c9a8f; /* Calming green-blue color */
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        font-size: 2rem;
+        font-weight: bold; font-family: 'quicksand'; color: #a9c9ba;
+      }
 
-    // Display the saved answer
-    function displayAnswer(answerData) {
-      const responsesDiv = document.getElementById("responses");
-      const answerElement = document.createElement("div");
-      answerElement.classList.add("answer");
-      answerElement.innerHTML = `
-        <p><strong>${answerData.question}</strong>: ${answerData.answer}</p>
-        <p class="date">${answerData.date}</p>
-      `;
-      responsesDiv.appendChild(answerElement);
-    }
+      /* Navigation Styles */
+       nav {
+    background-color: #87b8a1; /* Lighter green-blue */
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #356e64; 
+    border-top: 2px solid #356e64;/* Added bottom border */ margin: 0 1em;
+  }
 
-    // Delete all answers
-    function deleteAllAnswers() {
-      answers = [];
-      document.getElementById("responses").innerHTML = ''; // Clear displayed answers
-      document.getElementById("answer-section").style.display = "none"; // Hide the answer section
-      document.getElementById("question-section").style.display = "block"; // Show the question section again
-      currentQuestionIndex = 0;
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: bold; font-family: 'quicksand'; color: #356e64;margin: 0 1em;
+      }
+
+      /* Section Styles */
+      h1 {
+        text-align: center;
+        color: #4a4a4a;
+        margin-top: 20px;
+        font-size: 2rem;
+      }
+
+      p {
+        text-align: center;
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .question-section {
+        width: 90%;
+        max-width: 600px;
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .question {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: #444;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 12px 20px; /* Equal padding left and right */
+        font-size: 1rem;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        resize: none; /* Prevent resizing */
+        min-height: 100px;
+        display: block;
+        margin: 0 auto;
+        box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: #00f5ff;
+        box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+      }
+
+      .next-button {
+        padding: 12px 25px;
+        background-color: #87b8a1;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 15px;
+        font-size: 1rem;
+      }
+
+      .next-button:hover {
+        background-color: #a3cfba;
+      }
+
+      .answer-section {
+        width: 90%;
+        max-width: 600px;
+        background-color: #f1f1f1;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      .answer {
+        margin-bottom: 15px;
+        background-color: #e6f7ff;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+      }
+
+      .answer p {
+        margin: 5px 0;
+      }
+
+      .answer .date {
+        font-size: 0.9rem;
+        color: #777;
+      }
+
+      .delete-btn, .restart-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 15px;
+      }
+
+      .delete-btn {
+        background-color: #ff4d4d;
+        color: white;
+      }
+
+      .delete-btn:hover {
+        background-color: #e60000;
+      }
+
+      .restart-button {
+        background-color: #ffcc00;
+        color: white;
+      }
+
+      .restart-button:hover {
+        background-color: #e6b800;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <header>
+      Tough Situation
+    </header>
+
+    <nav>
+      <ul>    <a href="index.html">Home</a>
+
+  <a href="journal.html">Journal</a>
+    <a href="mood.html">Mood Tracker</a>
+    <a href="assessment.html">Assessments</a>
+        <a href="goals.html">Goal Tracker</a>
+
+    <a href="resources.html">Resources</a>
+  </ul>
+    </nav>
+
+    <h1>You're Going Through A Tough Time</h1>
+    <p>This activity will help you slow down, think through the situation, and find a way forward.</p>
+
+    <div id="question-section" class="question-section">
+      <p id="question" class="question">What situation is troubling you?</p>
+      <textarea id="answer" placeholder="Describe the situation"></textarea>
+      <div class="next-section">
+        <button class="next-button" onclick="saveAnswer()">Next</button>
+      </div>
+    </div>
+
+    <div id="answer-section" class="answer-section" style="display: none;">
+      <h3>Your Responses:</h3>
+      <div id="responses"></div> <!-- Answers will be shown here -->
+      <button class="delete-btn" onclick="deleteAllAnswers()">Delete All Answers</button>
+      <button class="restart-button" onclick="restartQuestions()">Restart</button>
+    </div>
+
+    <script>
+      let answers = [];
+      let currentQuestionIndex = 0;
+      const questions = [
+        { question: "What situation is troubling you?" },
+        { question: "What do you have the power and ability to change?" },
+        { question: "Who can you ask for help and what do you want them to do?" },
+        { question: "What are you not able to change?" },
+        { question: "What do you need to do to let go of what you can't change?" }
+      ];
+
+      // Function to save the answer and show the next question
+      function saveAnswer() {
+        const answerText = document.getElementById("answer").value.trim();
+        if (answerText) {
+          const date = new Date();
+          const hours = date.getHours();
+          const minutes = date.getMinutes();
+          const formattedTime = `${hours % 12 || 12}:${minutes < 10 ? '0' + minutes : minutes} ${hours >= 12 ? 'PM' : 'AM'}`;
+
+          answers.push({ question: questions[currentQuestionIndex].question, answer: answerText, date: formattedTime });
+          document.getElementById("answer").value = ''; // Clear textarea
+
+          // Show the answers after the first one
+          if (currentQuestionIndex === 0) {
+            document.getElementById("answer-section").style.display = "block";
+          }
+
+          displayAnswer({ question: questions[currentQuestionIndex].question, answer: answerText, date: formattedTime });
+
+          // Increment the question index
+          currentQuestionIndex++;
+          if (currentQuestionIndex < questions.length) {
+            loadQuestion();
+          } else {
+            document.getElementById("question-section").style.display = "none"; // Hide question section
+          }
+        } else {
+          alert("Please provide an answer before proceeding.");
+        }
+      }
+
+      // Load the next question
+      function loadQuestion() {
+        document.getElementById("question").textContent = questions[currentQuestionIndex].question;
+      }
+
+      // Display the saved answer
+      function displayAnswer(answerData) {
+        const responsesDiv = document.getElementById("responses");
+        const answerElement = document.createElement("div");
+        answerElement.classList.add("answer");
+        answerElement.innerHTML = `
+          <p><strong>${answerData.question}</strong>: ${answerData.answer}</p>
+          <p class="date">${answerData.date}</p>
+        `;
+        responsesDiv.appendChild(answerElement);
+      }
+
+      // Delete all answers
+      function deleteAllAnswers() {
+        answers = [];
+        document.getElementById("responses").innerHTML = ''; // Clear displayed answers
+        document.getElementById("answer-section").style.display = "none"; // Hide the answer section
+        document.getElementById("question-section").style.display = "block"; // Show the question section again
+        currentQuestionIndex = 0;
+        loadQuestion();
+      }
+
+      // Restart the question process
+      function restartQuestions() {
+        document.getElementById("question-section").style.display = "block";
+        currentQuestionIndex = 0;
+        loadQuestion();
+      }
+
+      // Initialize the first question
       loadQuestion();
-    }
+    </script>
 
-    // Restart the question process
-    function restartQuestions() {
-      document.getElementById("question-section").style.display = "block";
-      currentQuestionIndex = 0;
-      loadQuestion();
-    }
-
-    // Initialize the first question
-    loadQuestion();
-  </script>
-
-</body>
-</html>
+  </body>
+  </html>
