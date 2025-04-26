@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autism Assessment</title>
+    <title>Sociopath Assessment</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,8 +23,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            color: #0066cc;
+            color: red;
             text-align: center;
+            font-family: 'quicksand';
             font-size: 32px;
         }
         .question {
@@ -59,14 +61,14 @@
         button {
             font-size: 22px;
             padding: 10px 20px;
-            background-color: #0066cc;
+            background-color: red;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0055a5;
+            background-color: orangered;
         }
         .back-button {
             margin-top: 20px;
@@ -85,39 +87,40 @@
 <body>
 
     <div class="container">
-        <h1>Autism Assessment</h1>
-        <p>Please answer the following questions to help assess possible symptoms of autism.</p>
+        <h1>Sociopath Assessment</h1>
+        <p>Please answer the following questions to help assess possible symptoms of sociopath.</p>
         <form id="assessmentForm">
-            <div class="question">
-                <label for="question1">1. Do you often have difficulty making eye contact with others?</label><br>
-                <input type="radio" name="q1" value="0" id="q1_0"> Never
-                <input type="radio" name="q1" value="1" id="q1_1"> Sometimes
-                <input type="radio" name="q1" value="2" id="q1_2"> Frequently
-            </div>
-            <div class="question">
-                <label for="question2">2. Do you struggle with understanding or using gestures, facial expressions, or body language?</label><br>
-                <input type="radio" name="q2" value="0" id="q2_0"> Never
-                <input type="radio" name="q2" value="1" id="q2_1"> Sometimes
-                <input type="radio" name="q2" value="2" id="q2_2"> Frequently
-            </div>
-            <div class="question">
-                <label for="question3">3. Do you find it difficult to maintain conversations or sustain interest in them?</label><br>
-                <input type="radio" name="q3" value="0" id="q3_0"> Never
-                <input type="radio" name="q3" value="1" id="q3_1"> Sometimes
-                <input type="radio" name="q3" value="2" id="q3_2"> Frequently
-            </div>
-            <div class="question">
-                <label for="question4">4. Do you have repetitive movements or behaviors (such as rocking or hand-flapping)?</label><br>
-                <input type="radio" name="q4" value="0" id="q4_0"> Never
-                <input type="radio" name="q4" value="1" id="q4_1"> Sometimes
-                <input type="radio" name="q4" value="2" id="q4_2"> Frequently
-            </div>
-            <div class="question">
-                <label for="question5">5. Do you find it difficult to adapt to changes in routine or environment?</label><br>
-                <input type="radio" name="q5" value="0" id="q5_0"> Never
-                <input type="radio" name="q5" value="1" id="q5_1"> Sometimes
-                <input type="radio" name="q5" value="2" id="q5_2"> Frequently
-            </div>
+           <div class="question">
+    <label for="question1">1. Do you often disregard rules, laws, or social norms without feeling guilty?</label><br>
+    <input type="radio" name="q1" value="0" id="q1_0"> Never
+    <input type="radio" name="q1" value="1" id="q1_1"> Sometimes
+    <input type="radio" name="q1" value="2" id="q1_2"> Frequently
+</div>
+<div class="question">
+    <label for="question2">2. Do you manipulate or deceive others for personal gain or pleasure?</label><br>
+    <input type="radio" name="q2" value="0" id="q2_0"> Never
+    <input type="radio" name="q2" value="1" id="q2_1"> Sometimes
+    <input type="radio" name="q2" value="2" id="q2_2"> Frequently
+</div>
+<div class="question">
+    <label for="question3">3. Do you feel little or no remorse when you hurt others emotionally or physically?</label><br>
+    <input type="radio" name="q3" value="0" id="q3_0"> Never
+    <input type="radio" name="q3" value="1" id="q3_1"> Sometimes
+    <input type="radio" name="q3" value="2" id="q3_2"> Frequently
+</div>
+<div class="question">
+    <label for="question4">4. Do you often act impulsively or irresponsibly, even when it puts others at risk?</label><br>
+    <input type="radio" name="q4" value="0" id="q4_0"> Never
+    <input type="radio" name="q4" value="1" id="q4_1"> Sometimes
+    <input type="radio" name="q4" value="2" id="q4_2"> Frequently
+</div>
+<div class="question">
+    <label for="question5">5. Do you have a pattern of aggressive or violent behavior towards others?</label><br>
+    <input type="radio" name="q5" value="0" id="q5_0"> Never
+    <input type="radio" name="q5" value="1" id="q5_1"> Sometimes
+    <input type="radio" name="q5" value="2" id="q5_2"> Frequently
+</div>
+
             <button type="button" onclick="calculateResult()">Submit</button>
         </form>
 
@@ -125,7 +128,9 @@
         
         <a href="assessment.html" class="back-button">Back to Assessment</a>
     </div>
-
+<footer style="text-align: center; margin-top: 50px; font-size: 14px; color: #999;">
+    <p>Disclaimer: This assessment is for informational purposes only and not a diagnosis.</p>
+</footer>
     <script>
         function calculateResult() {
             const form = document.getElementById("assessmentForm");
@@ -141,13 +146,13 @@
 
             // Result based on total score
             if (totalScore <= 5) {
-                resultText = "Your score is " + totalScore + "/10. You do not show significant symptoms of autism.";
+                resultText = "Your score is " + totalScore + "/10. You do not show significant symptoms of sociopath.";
                 resultClass = "success";
             } else if (totalScore <= 10) {
-                resultText = "Your score is " + totalScore + "/10. You might be experiencing mild symptoms of autism. Consider talking to a professional.";
+                resultText = "Your score is " + totalScore + "/10. You might be experiencing mild symptoms of sociopath. Consider talking to a professional.";
                 resultClass = "warning";
             } else {
-                resultText = "Your score is " + totalScore + "/10. You may be experiencing significant symptoms. It's important to seek professional help.";
+                resultText = "Your score is " + totalScore + "/10. You may be experiencing significant symptoms of sociopath. It's important to seek professional help.";
                 resultClass = "danger";
             }
 
