@@ -183,17 +183,18 @@
       </select>
       <button onclick="saveMood()">Save Mood</button>
 
-      <h3 id="moodDisplay">You're feeling  Anxious.</h3>
-      <p id="moodParagraph" style="display: block;">Anxiety often shows up when your mind is racing about the future or uncertain outcomes. It can feel overwhelming, but it won’t last forever.
+      <h3 id="moodDisplay" style="display: none;"></h3>
+<p id="moodParagraph" style="display: none;"></p>
+<div id="extraInput" style="display: none;">
+  <label for="moodNotes">Would you like to write more about it?</label>
+  <textarea id="moodNotes" placeholder="Write here..."></textarea>
+  <button onclick="saveMore()">Save Note</button>
+</div>
 
-Tip: Take a moment to breathe slowly. Try the 4-7-8 method: inhale for 4 seconds, hold for 7, exhale for 8. 🌬️</p>
 
-      <div id="extraInput" style="display: block;">
-        <label for="moodNotes">Would you like to write more about it?</label>
-        <textarea id="moodNotes" placeholder="Write here..."></textarea>
-        <button onclick="saveMore()">Save Note</button>
-      </div>
-    </div>
+      &nbsp;      &nbsp;
+      &nbsp;
+      &nbsp;</div>
 
     <div class="history">
       <h2>Note History</h2>
@@ -258,19 +259,21 @@ Tip: Take a moment to breathe slowly. Try the 4-7-8 method: inhale for 4 seconds
   };
 
   function saveMood() {
-    const mood = document.getElementById("moodSelect").value;
-    const moodDisplay = document.getElementById("moodDisplay");
-    const moodPara = document.getElementById("moodParagraph");
-    const extraInput = document.getElementById("extraInput");
+  const mood = document.getElementById("moodSelect").value;
+  const moodDisplay = document.getElementById("moodDisplay");
+  const moodPara = document.getElementById("moodParagraph");
+  const extraInput = document.getElementById("extraInput");
 
-    if (mood) {
-      localStorage.setItem("selectedMood", mood);
-      moodDisplay.textContent = "You're feeling " + moodDescription[mood];
-      moodPara.textContent = moodTexts[mood] || "";
-      moodPara.style.display = "block";
-      extraInput.style.display = "block";
-    }
+  if (mood) {
+    localStorage.setItem("selectedMood", mood);
+    moodDisplay.textContent = "You're feeling" + moodDescription[mood];
+    moodDisplay.style.display = "block"; // <<< ADD THIS LINE
+    moodPara.textContent = moodTexts[mood] || "";
+    moodPara.style.display = "block";
+    extraInput.style.display = "block";
   }
+}
+
 
   function saveMore() {
     const mood = localStorage.getItem("selectedMood");
