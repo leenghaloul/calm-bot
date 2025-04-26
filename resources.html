@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Resources</title>
+  <title>Resources</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -14,8 +15,17 @@
 
     header, nav {
       text-align: center;
-      padding: 1rem;
+      padding: 1rem; font-family: 'quicksand';
+
     }
+    header{color: skyblue;}
+nav {
+  text-align: center;
+  padding: 1rem;
+  font-family: 'quicksand';
+  border-top: 2px solid #0077cc; /* Top border with the desired color */
+  border-bottom: 2px solid #0077cc; /* Bottom border with the desired color */
+}
 
     nav ul {
       list-style: none;
@@ -23,9 +33,12 @@
     }
 
     nav a {
-      text-decoration: none;
-      color: #0077cc;
-    }
+  text-decoration: none;
+  color: #0077cc;
+  font-family: 'quicksand';
+  margin: 0 15px; /* Add margin to create space between links */
+}
+
 
     main {
       padding: 2rem 1rem;
@@ -248,13 +261,19 @@
 
   <nav>
     <ul>
-      <li><a href="index.html"><b>Home</b></a></li>
+      <a href="index.html"><b>Home</b></a>
+
+  <a href="journal.html">Journal</a>
+    <a href="mood.html">Mood Tracker</a>
+    <a href="assessment.html">Assessments</a>
+    <a href="goals.html">Goal Tracker</a>
+    <a href="situations.html">Coping Tools</a>
     </ul>
   </nav>
 
   <main>
 <section class="urgent-help">
-  <h2>🚨 Urgent Help (UAE)</h2>
+  <h2> Urgent Help (UAE)</h2>
   <p>If you or someone you know is in immediate danger or needs urgent mental health support, please reach out to one of the following resources:</p>
 
   <ul>
@@ -327,7 +346,6 @@
 
     <section class="video-resources">
   <h2>Mental Health Videos</h2>
-  <p>Watch calming or informative videos to support your mental health journey.</p>
 
   <div class="video-scroll-wrapper">
     <button class="arrow video-left" onclick="scrollVideos(-1)">&#10094;</button>
@@ -378,7 +396,7 @@
 
     <!-- Map Section -->
     <section>
-      <p>Find the nearest support centers:</p>
+      <h3>Find the nearest support centers:</h3>
       <iframe
         width="50%"
         height="400"
