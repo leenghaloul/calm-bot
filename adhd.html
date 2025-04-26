@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADHD Assessment</title>
+    <title>ADHD Assessment</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm6k2s2jP4+6j2D9X0Z5I9NxXkz7XfT+dopsf/7t4lVfLIqX3t2JdEOpFL0J9p+QvR/L8a0NqFZn7rcj2X9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,7 +25,7 @@
         h1 {
             color: purple;
             text-align: center;
-            font-size: 32px;
+            font-size: 32px; font-family: 'quicksand';
         }
         .question {
             margin: 25px 0;
@@ -125,7 +126,9 @@
         
         <a href="assessment.html" class="back-button">Back to Assessment</a>
     </div>
-
+<footer style="text-align: center; margin-top: 50px; font-size: 14px; color: #999;">
+    <p>Disclaimer: This assessment is for informational purposes only and not a diagnosis.</p>
+</footer>
     <script>
         function calculateResult() {
             const form = document.getElementById("assessmentForm");
